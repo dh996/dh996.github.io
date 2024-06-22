@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.dh996.project11re.simul.machin.setting.DefaultSetting;
+import lombok.Getter;
+import lombok.Setter;
 import kr.co.dh996.project11re.simul.machin.setting.CreateSid;
 
+@Getter
+@Setter
 public class SimulMainObject {
 	
-	//시뮬레이션은 이 인스턴스를 참조하여 실행된다.
-	public String sid;
-	public String userName;
-	public String version;
-	public UsingSimulProcess usingSimulProcess;
-	public List<SimulData> simulDataList;
-	public List<SimulProcess> simulProcessList;
-	public List<SimulLog> simulLogList;
-	public List<BattlePower> battlePowerList;
+	//시뮬레이션은 이 인스턴스를 참조하여 실행된다. 이 인스턴스는 그 정보를 담아두고 있는 것만을 목적으로 하려 한다.
+	private String sid;
+	private String userName;
+	private String version;
+	private UsingSimulProcess usingSimulProcess;
+	private List<SimulData> simulDataList;
+	private List<SimulProcess> simulProcessList;
+	private List<SimulLog> simulLogList;
+	private List<BattlePower> battlePowerList;
 	
 	public SimulMainObject(UsersPick usersPick) {
 		
