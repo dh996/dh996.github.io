@@ -3,7 +3,6 @@ package kr.co.dh996.project11re.simul.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.co.dh996.project11re.simul.machin.setting.DefaultSetting;
 import lombok.Getter;
 import lombok.Setter;
 import kr.co.dh996.project11re.simul.machin.setting.CreateSid;
@@ -17,26 +16,21 @@ public class SimulMainObject {
 	private String userName;
 	private String version;
 	private UsingSimulProcess usingSimulProcess;
-	private List<SimulData> simulDataList;
-	private List<SimulProcess> simulProcessList;
+	private List<UsingSimulData> simulDataList;
+	private List<RecodSimulProcess> simulProcessList;
 	private List<SimulLog> simulLogList;
 	private List<BattlePower> battlePowerList;
 	
-	public SimulMainObject(UsersPick usersPick) {
-		
-		DefaultSetting defaultSetting = new DefaultSetting();
+	public SimulMainObject(String userName, String version) {
 		
 		this.sid = CreateSid.createSid();
-		this.userName = usersPick.getUserName();
-		this.version = usersPick.getVersion();
-		this.usingSimulProcess = defaultSetting.setUSP();
-		this.simulDataList = defaultSetting.setDataList(usersPick);
+		this.userName = userName;
+		this.version = version;
+		this.usingSimulProcess = new UsingSimulProcess();
+		this.simulDataList = new ArrayList<>();
 		this.simulProcessList = new ArrayList<>();
 		this.simulLogList = new ArrayList<>();
 		this.battlePowerList = new ArrayList<>();
-		
-		//이런 식으로 설정하면 defaultSetting객체가 생성자 안에서만 생존하다가 가비지 컬랙션이 된다고 한다
-		defaultSetting = null;
 	}
 
 }

@@ -53,14 +53,4 @@ public class SimulProcess {
     private int biE;
     private int ltE;
     private int rtE;
-    private int c1u;
-    private int c2u;
-    private int c3u;
-    private int c4u;
-    private int c5u;
-    private int c1e;
-    private int c2e;
-    private int c3e;
-    private int c4e;
-    private int c5e;
 }
