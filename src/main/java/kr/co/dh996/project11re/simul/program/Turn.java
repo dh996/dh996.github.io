@@ -1,12 +1,14 @@
 package kr.co.dh996.project11re.simul.program;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
 import kr.co.dh996.project11re.simul.machin.turn.TurnCheck;
 import kr.co.dh996.project11re.simul.machin.turn.BattlePhase;
 import kr.co.dh996.project11re.simul.machin.turn.InitSetting;
 
+@Component
 public class Turn {
 	//턴 진행 관련 기능을 수행합니다.
 

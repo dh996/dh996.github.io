@@ -1,7 +1,10 @@
 package kr.co.dh996.project11re.simul.machin.round;
 
+import org.springframework.stereotype.Component;
+
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
 
+@Component
 public class RoundManage {
 	//이 클래스는 라운드 진행에 따른 메인 객체의 기초적인 값 수정에 관여합니다.
 	

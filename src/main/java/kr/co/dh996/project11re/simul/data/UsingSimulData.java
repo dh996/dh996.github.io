@@ -1,6 +1,8 @@
 package kr.co.dh996.project11re.simul.data;
 
-import kr.co.dh996.project11re.dto.champDTO;
+import java.util.List;
+
+import kr.co.dh996.project11re.dto.ChampDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +15,22 @@ public class UsingSimulData extends SimulData {
 	private String position;
 	private int exp;
 	private BattlePower battlePower;
+	private List<String> champTags;
 	
-	public UsingSimulData(champDTO champDTO) {
+	public UsingSimulData(ChampDTO champDTO, int num, int team) {
 		// TODO Auto-generated constructor stub
-		//champDTO의 내용이 확정되면 작성예정입니다.
+		super();
+		this.champID = champDTO.getChampID();
+		this.position = "none";
+		this.exp = 0;
+		this.battlePower = new BattlePower();
+		this.champTags = champDTO.getChampTags();
+		setChampName(champDTO.getChampName());
+		setTeam(team);
+		setKill(0);
+		setDeath(0);
+		setAssist(0);
+		setLevel(1);
+		setNum(num);
 	}
 }

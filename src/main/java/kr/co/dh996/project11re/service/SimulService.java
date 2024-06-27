@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import kr.co.dh996.project11re.simul.data.RecodSimulProcess;
 import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import kr.co.dh996.project11re.simul.data.SimulLog;
-import kr.co.dh996.project11re.dto.champDTO;
+import kr.co.dh996.project11re.dto.ChampDTO;
 
 @Service
 public class SimulService {
@@ -36,7 +36,12 @@ public class SimulService {
 		
 	}
 
-	public List<champDTO> getChampList(List<String> usersPickChamp) {
+	public List<ChampDTO> getChampList(List<String> usersPickChamp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<ChampDTO> getAllChampList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

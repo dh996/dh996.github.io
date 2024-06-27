@@ -1,8 +1,10 @@
 package kr.co.dh996.project11re.simul.program;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
+import kr.co.dh996.project11re.simul.machin.round.BattleCheck;
 import kr.co.dh996.project11re.simul.machin.round.ChampGrow;
 import kr.co.dh996.project11re.simul.machin.round.FieldSetting;
 import kr.co.dh996.project11re.simul.machin.round.ObjectSetting;
@@ -11,6 +13,7 @@ import kr.co.dh996.project11re.simul.machin.round.RoundManage;
 import kr.co.dh996.project11re.simul.machin.round.TakeAdventage;
 import kr.co.dh996.project11re.simul.machin.round.RoundCheck;
 
+@Component
 public class Round {
 	//라운드 진행 관련 기능을 수행합니다.
 
@@ -19,6 +22,7 @@ public class Round {
     private final ChampGrow champGrow;
     private final PowerSetting powerSetting;
     private final RoundCheck roundCheck;
+    private final BattleCheck battleCheck;
     private final TakeAdventage takeAdventage;
     private final ObjectSetting objectSetting;
     private final Turn turn;
@@ -30,6 +34,7 @@ public class Round {
             ChampGrow champGrow,
             PowerSetting powerSetting,
             RoundCheck roundCheck,
+            BattleCheck battleCheck,
             TakeAdventage takeAdventage,
             ObjectSetting objectSetting,
             Turn turn) {
@@ -38,6 +43,7 @@ public class Round {
         this.champGrow = champGrow;
         this.powerSetting = powerSetting;
         this.roundCheck = roundCheck;
+        this.battleCheck = battleCheck;
         this.takeAdventage = takeAdventage;
         this.objectSetting = objectSetting;
         this.turn = turn;
@@ -49,12 +55,12 @@ public class Round {
 		champGrow.setGrow(simulMO); //이번 라운드 챔피언 성장 수치를 결정합니다.
 		powerSetting.setPower(simulMO); //이번 라운드 전투력 수치를 결정합니다.
 		turn.turnLoop(simulMO,1); //전투 턴을 진행합니다.
-		roundCheck.winCheck(simulMO); //전투 승패를 판정합니다.
+		battleCheck.winCheck(simulMO); //전투 승패를 판정합니다.
 		takeAdventage.setAdv(simulMO); //전투 결과에 따른 어드밴티지를 결정합니다.
 		objectSetting.setObj(simulMO); //이번 라운드의 오브젝트 관리 기능을 실행합니다.
 		roundManage.recodingSimulProcess(simulMO); //이번 라운드의 전체적 진행상황을 저장합니다.
 		//다음 라운드 진행 여부를 판단합니다.
-		if(winCheck.checkRound(simulMO)) {
+		if(roundCheck.winCheck(simulMO)) {
 			roundLoop(simulMO); //다음 라운드 진행 판정시 다음 라운드를 시작합니다.
 		}
     }
