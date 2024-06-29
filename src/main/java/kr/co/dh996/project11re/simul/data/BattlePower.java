@@ -11,6 +11,7 @@ public class BattlePower {
 	private int hp;
 	private int attackPower;
 	private int initPower;
+	private int siegePower;
 	private int aggroGauge;
 	private int roundKill;
 	private int roundDeath;

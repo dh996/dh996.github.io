@@ -1,0 +1,10 @@
+package kr.co.dh996.project11re.simul.machin.round.extendPT;
+
+class Support extends SupportParent{
+
+	Support(){
+		super();
+		setDefaultHp(600);
+		setDefaultSp(80);
+	}
+}

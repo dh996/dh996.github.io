@@ -12,7 +12,7 @@ import kr.co.dh996.project11re.simul.data.UsingSimulData;
 public class EnemySetting {
 	//적 팀 정보 생성 기능을 담당합니다.
 	private final Random random = new Random();
-	List<ChampDTO> allChampDTOList;
+	private List<ChampDTO> allChampDTOList;
 
 	public void setEnemy(List<UsingSimulData> simulDataList, List<ChampDTO> allChampDTOList) {
 		// TODO Auto-generated method stub
