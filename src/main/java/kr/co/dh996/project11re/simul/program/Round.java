@@ -54,9 +54,9 @@ public class Round {
 		fieldSetting.setField(simulMO); //이번 라운드 전투 지형을 설정합니다.
 		champGrow.setGrow(simulMO); //이번 라운드 챔피언 성장 수치를 결정합니다.
 		powerSetting.setPower(simulMO); //이번 라운드 전투력 수치를 결정합니다.
-		turn.turnLoop(simulMO,1); //전투 턴을 진행합니다.
-		battleCheck.winCheck(simulMO); //전투 승패를 판정합니다.
-		takeAdventage.setAdv(simulMO); //전투 결과에 따른 어드밴티지를 결정합니다.
+		turn.turnStart(simulMO); //전투 턴을 진행합니다.
+		int turnWin = battleCheck.winCheck(simulMO); //전투 승패를 판정합니다.
+		takeAdventage.setAdv(simulMO, turnWin); //전투 결과에 따른 어드밴티지를 결정합니다.
 		objectSetting.setObj(simulMO); //이번 라운드의 오브젝트 관리 기능을 실행합니다.
 		roundManage.recodingSimulProcess(simulMO); //이번 라운드의 전체적 진행상황을 저장합니다.
 		//다음 라운드 진행 여부를 판단합니다.

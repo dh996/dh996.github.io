@@ -1,15 +1,13 @@
 package kr.co.dh996.project11re.simul.machin.turn;
 
-import kr.co.dh996.project11re.simul.data.SimulMainObject;
-import kr.co.dh996.project11re.simul.machin.itf.WinCheck;
+import kr.co.dh996.project11re.simul.data.TurnData;
 
-public class TurnCheck implements WinCheck {
+public class TurnCheck{
 
 	//전투 속행 여부를 판단합니다.
-	@Override
-	public boolean winCheck(SimulMainObject simulMO) {
+	public int winCheck(TurnData turnData) {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 }

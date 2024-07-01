@@ -7,8 +7,8 @@ public class BattleCheck implements WinCheck {
 
 	//전투 승패 여부를 판단합니다.
 	@Override
-	public boolean winCheck(SimulMainObject simulMO) {
+	public int winCheck(SimulMainObject simulMO) {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 }

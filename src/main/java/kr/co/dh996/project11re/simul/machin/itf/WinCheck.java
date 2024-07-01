@@ -4,5 +4,5 @@ import kr.co.dh996.project11re.simul.data.SimulMainObject;
 
 public interface WinCheck {
 
-	public boolean winCheck(SimulMainObject simulMO);
+	public int winCheck(SimulMainObject simulMO);
 }
