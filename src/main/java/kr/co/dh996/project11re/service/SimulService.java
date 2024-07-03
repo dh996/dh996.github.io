@@ -16,11 +16,17 @@ public class SimulService {
 	public void saveSimul(List<RecordSimulData> recordData, List<RecodSimulProcess> recordProcess,
 			List<SimulLog> recordLog) {
 		// TODO Auto-generated method stub
+		saveInfo();
 		saveData(recordData);
 		saveProcess(recordProcess);
 		saveLog(recordLog);
 	}
 	
+	private void saveInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void saveData(List<RecordSimulData> simulDataList) {
 		// TODO Auto-generated method stub
 		

@@ -8,5 +8,6 @@ class FightTank extends TankParent{
 		setDefaultAp(120);
 		setDefaultSp(150);
 		setDefaultIp(110);
+		setDefaultAs(4);
 	}
 }

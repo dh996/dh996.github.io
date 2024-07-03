@@ -8,5 +8,6 @@ class MageSupport extends SupportParent{
 		setDefaultAp(100);
 		setDefaultSp(120);
 		setDefaultIp(60);
+		setDefaultAs(2);
 	}
 }

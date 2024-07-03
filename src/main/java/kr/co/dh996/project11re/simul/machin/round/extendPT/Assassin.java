@@ -11,5 +11,6 @@ class Assassin extends PowerTable{
 		setDefaultSp(160);
 		setDefaultIp(70);
 		setDefaultAg(30);
+		setDefaultAs(3);
 	}
 }

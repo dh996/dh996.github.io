@@ -13,6 +13,7 @@ public class BattlePower {
 	private int initPower;
 	private int siegePower;
 	private int aggroGauge;
+	private int attackSpeed;
 	private int roundKill;
 	private int roundDeath;
 	private int roundAssist;

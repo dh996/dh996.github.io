@@ -48,6 +48,13 @@ public class Round {
         this.objectSetting = objectSetting;
         this.turn = turn;
     }
+    
+    //라운드를 실행합니다.
+    public void roundStart(SimulMainObject simulMO) {
+    	do {
+    		roundLoop(simulMO);
+        } while (roundCheck.winCheck(simulMO)>2); //종료 조건을 만족할때까지 라운드루프를 반복합니다.
+    }
 
     public void roundLoop(SimulMainObject simulMO) {
     	roundManage.incRound(simulMO); //라운드 카운트를 1회 증가시킵니다.
@@ -59,9 +66,5 @@ public class Round {
 		takeAdventage.setAdv(simulMO, turnWin); //전투 결과에 따른 어드밴티지를 결정합니다.
 		objectSetting.setObj(simulMO); //이번 라운드의 오브젝트 관리 기능을 실행합니다.
 		roundManage.recodingSimulProcess(simulMO); //이번 라운드의 전체적 진행상황을 저장합니다.
-		//다음 라운드 진행 여부를 판단합니다.
-		if(roundCheck.winCheck(simulMO)) {
-			roundLoop(simulMO); //다음 라운드 진행 판정시 다음 라운드를 시작합니다.
-		}
     }
 }

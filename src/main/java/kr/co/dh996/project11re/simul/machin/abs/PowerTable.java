@@ -18,6 +18,7 @@ public abstract class PowerTable {
 	private int defaultSp;
 	private int defaultIp;
 	private int defaultAg;
+	private int defaultAs;
 	private int scale;
 	
 	public void setBattlePower(UsingSimulData uSD, int dragonStacks,
@@ -41,6 +42,7 @@ public abstract class PowerTable {
 		// TODO Auto-generated method stub
 		setPower(battlePower, (defaultHp*scale)/10, (defaultAp*scale)/15,
 				(defaultSp*scale)/30, (defaultIp*scale)/10, (defaultAg*scale)/10);
+		battlePower.setAttackSpeed(defaultAs);
 		battlePower.setRoundKill(0);
 		battlePower.setRoundDeath(0);
 		battlePower.setRoundAssist(0);

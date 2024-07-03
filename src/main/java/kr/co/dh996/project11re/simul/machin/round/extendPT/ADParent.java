@@ -9,6 +9,7 @@ class ADParent extends PowerTable{
 		super();
 		setDefaultIp(20);
 		setDefaultAg(30);
+		setDefaultAs(8);
 	}
 
 	protected void checkUtilSup(BattlePower battlePower) {

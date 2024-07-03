@@ -7,5 +7,6 @@ class TankParent extends PowerTable{
 	TankParent(){
 		super();
 		setDefaultAg(100);
+		setDefaultAs(2);
 	}
 }

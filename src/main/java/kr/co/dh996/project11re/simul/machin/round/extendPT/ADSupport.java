@@ -8,5 +8,6 @@ class ADSupport extends SupportParent{
 		setDefaultAp(100);
 		setDefaultSp(120);
 		setDefaultIp(30);
+		setDefaultAs(5);
 	}
 }

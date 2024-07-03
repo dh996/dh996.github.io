@@ -15,6 +15,7 @@ public class SimulMainObject {
 	private String sid;
 	private String userName;
 	private String version;
+	private int winLose;
 	private UsingSimulProcess usingSimulProcess;
 	private List<UsingSimulData> simulDataList;
 	private List<RecodSimulProcess> simulProcessList;
@@ -26,6 +27,7 @@ public class SimulMainObject {
 		this.sid = CreateSid.createSid();
 		this.userName = userName;
 		this.version = version;
+		this.winLose = 2;
 		this.usingSimulProcess = new UsingSimulProcess();
 		this.simulDataList = new ArrayList<>();
 		this.simulProcessList = new ArrayList<>();

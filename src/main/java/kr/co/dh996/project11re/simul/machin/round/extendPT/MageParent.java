@@ -10,5 +10,6 @@ class MageParent extends PowerTable{
 		setDefaultAp(130);
 		setDefaultSp(160);
 		setDefaultIp(60);
+		setDefaultAs(3);
 	}
 }

@@ -7,5 +7,6 @@ class DealSupport extends SupportParent{
 		setDefaultHp(650);
 		setDefaultAp(100);
 		setDefaultSp(100);
+		setDefaultAs(4);
 	}
 }

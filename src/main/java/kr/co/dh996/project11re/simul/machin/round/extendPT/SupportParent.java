@@ -9,5 +9,6 @@ class SupportParent extends PowerTable{
 		setDefaultAp(70);
 		setDefaultIp(70);
 		setDefaultAg(50);
+		setDefaultAs(1);
 	}
 }

@@ -11,5 +11,6 @@ class Fighter extends PowerTable{
 		setDefaultSp(150);
 		setDefaultIp(90);
 		setDefaultAg(80);
+		setDefaultAs(4);
 	}
 }

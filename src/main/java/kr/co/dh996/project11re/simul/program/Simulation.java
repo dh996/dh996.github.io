@@ -41,7 +41,7 @@ public class Simulation {
 		enemySetting.setEnemy(simulMO.getSimulDataList(), callChampList()); //적 팀 리스트를 추가합니다.
 		buildSetting.setBuild(simulMO.getSimulDataList(), 0); //빌드 정보를 설정합니다.
 		buildSetting.setBuild(simulMO.getSimulDataList(), 1); //0은 아군의 정보, 1은 적군의 정보를 설정합니다.
-		round.roundLoop(simulMO); //시뮬레이션을 시작합니다.
+		round.roundStart(simulMO); //시뮬레이션을 시작합니다.
 		saveSimul(simulMO); //종료 판정시 데이터를 데이터베이스에 저장합니다.
 	}
 

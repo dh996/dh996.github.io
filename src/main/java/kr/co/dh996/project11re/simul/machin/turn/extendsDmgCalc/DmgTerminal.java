@@ -24,4 +24,21 @@ public class DmgTerminal {
 		this.supportDmg = supportDmg;
 		this.tankDmg = tankDmg;
 	}
+	
+	public int returnDmg(String type, int attackPower) {
+		if("ADC".equals(type) || "FureADC".equals(type) || "ADSupport".equals(type)) {
+			return aDDmg.getDamage(attackPower);
+		}else if("Assassin".equals(type)) {
+			return assassinDmg.getDamage(attackPower);
+		}else if("Fighter".equals(type) || "FighterTank".equals(type) || "DealSupport".equals(type)) {
+			return fighterDmg.getDamage(attackPower);
+		}else if("Mage".equals(type) || "FureMage".equals(type)
+				|| "MageSupport".equals(type) || "MageTank".equals(type)) {
+			return mageDmg.getDamage(attackPower);
+		}else if("Tank".equals(type) || "FureTank".equals(type)) {
+			return tankDmg.getDamage(attackPower);
+		}else {
+			return supportDmg.getDamage(attackPower);
+		}
+	}
 }
