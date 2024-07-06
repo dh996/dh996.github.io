@@ -107,4 +107,32 @@ public class PositionTerminal {
 			utilSupport.setBattlePower(usingSimulData, dragonSize, baron, elder);
 		}
 	}
+
+	//선제공격 실패에 대한 디메리트를 부여합니다.
+	public void getInitDemerit(UsingSimulData usingSimulData) {
+		// TODO Auto-generated method stub
+		if("ADC".equals(usingSimulData.getPosition())) {
+			aDC.setDemerit(usingSimulData.getBattlePower(), 2);
+		}else if("FureADC".equals(usingSimulData.getPosition())) {
+			fureADC.setDemerit(usingSimulData.getBattlePower(), 2);
+		}else if("ADSupport".equals(usingSimulData.getPosition())) {
+			aDSupport.setDemerit(usingSimulData.getBattlePower(), 2);
+		}else if("Assassin".equals(usingSimulData.getPosition())) {
+			assassin.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("DealSupport".equals(usingSimulData.getPosition())) {
+			dealSupport.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("Fighter".equals(usingSimulData.getPosition())) {
+			fighter.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("FightTank".equals(usingSimulData.getPosition())) {
+			fightTank.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("FureMage".equals(usingSimulData.getPosition())) {
+			fureMage.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("Mage".equals(usingSimulData.getPosition())) {
+			mage.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("MageSupport".equals(usingSimulData.getPosition())) {
+			mageSupport.setDemerit(usingSimulData.getBattlePower(), 1);
+		}else if("MageTank".equals(usingSimulData.getPosition())) {
+			mageTank.setDemerit(usingSimulData.getBattlePower(), 1);
+		}
+	}
 }

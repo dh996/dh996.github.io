@@ -88,4 +88,9 @@ public abstract class PowerTable {
 	    	);
 		}
 	}
+	
+	//디메리트 설정 기능입니다. 공격 가능 횟수를 일정 숫자만큼 차감합니다.
+	public void setDemerit(BattlePower battlePower, int demerit) {
+		battlePower.setAttackSpeed(battlePower.getAttackSpeed()-demerit);
+	}
 }

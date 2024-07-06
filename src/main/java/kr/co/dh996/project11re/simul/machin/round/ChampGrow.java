@@ -24,9 +24,9 @@ public class ChampGrow {
 			simulMO.getSimulDataList().get(i).setExp(getExp+simulMO.getSimulDataList().get(i).getExp());
 			this.level = levelUp(simulMO.getSimulDataList().get(i).getExp());
 			simulMO.getSimulDataList().get(i).setLevel(level); //성장 결과를 저장합니다.
-			SaveLogs.saveLevelLog(simulMO.getSid(), simulMO.getSimulDataList().get(i).getChampName(),
-					Integer.toString(level), simulMO.getUsingSimulProcess().getRound(),
-					simulMO.getSimulLogList(), simulMO.getSimulDataList().get(i).getTeam());
+			SaveLogs.saveLevelLog(simulMO.getSid(), simulMO.getUsingSimulProcess().getRound(),
+					simulMO.getSimulLogList(), simulMO.getSimulDataList().get(i).getChampName(),
+					Integer.toString(level), simulMO.getSimulDataList().get(i).getTeam());
 			    //성장 로그를 저장합니다.
 		}
 	}

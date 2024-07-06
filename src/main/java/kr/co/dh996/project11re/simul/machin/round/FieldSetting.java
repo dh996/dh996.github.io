@@ -21,11 +21,12 @@ public class FieldSetting {
 		setDefault(); //설정 가능 전투지형을 기본값으로 세팅합니다.
 		roundCheck(simulMO.getUsingSimulProcess().getRound()); //이른 시점에 깊은 곳에서 전투를 치르지 않도록 조정합니다.
 		towerCheck(simulMO); //구조물 파괴 여부에 따른 설정 가능 전투지형을 조정합니다.
-		objectCheck(simulMO.getUsingSimulProcess().getDragonNest(), simulMO.getUsingSimulProcess().getBaronNest());
+		objectCheck(simulMO.getUsingSimulProcess().getDragonNest(),
+				simulMO.getUsingSimulProcess().getBaronNest());
 		    //오브젝트 소환 여부에 따라 설정 가능 전투지형을 조정합니다.
 		simulMO.getUsingSimulProcess().setField(setField()); //최종 전투 지형을 설정합니다.
-		SaveLogs.saveFieldLog(simulMO.getSid(), simulMO.getUsingSimulProcess().getField()
-				,simulMO.getUsingSimulProcess().getRound(), simulMO.getSimulLogList());
+		SaveLogs.saveFieldLog(simulMO.getSid(), simulMO.getUsingSimulProcess().getRound(),
+				simulMO.getSimulLogList(),simulMO.getUsingSimulProcess().getField());
 		    //이번 라운드에 설정된 전투지형의 로그를 저장합니다.
 	}
 

@@ -3,6 +3,8 @@ package kr.co.dh996.project11re.simul.machin.turn.extendsDmgCalc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import kr.co.dh996.project11re.simul.data.UsingSimulData;
+
 @Component
 public class DmgTerminal {
 
@@ -25,20 +27,22 @@ public class DmgTerminal {
 		this.tankDmg = tankDmg;
 	}
 	
-	public int returnDmg(String type, int attackPower) {
-		if("ADC".equals(type) || "FureADC".equals(type) || "ADSupport".equals(type)) {
-			return aDDmg.getDamage(attackPower);
-		}else if("Assassin".equals(type)) {
-			return assassinDmg.getDamage(attackPower);
-		}else if("Fighter".equals(type) || "FighterTank".equals(type) || "DealSupport".equals(type)) {
-			return fighterDmg.getDamage(attackPower);
-		}else if("Mage".equals(type) || "FureMage".equals(type)
-				|| "MageSupport".equals(type) || "MageTank".equals(type)) {
-			return mageDmg.getDamage(attackPower);
-		}else if("Tank".equals(type) || "FureTank".equals(type)) {
-			return tankDmg.getDamage(attackPower);
+	public int returnDmg(UsingSimulData uSD) {
+		if("ADC".equals(uSD.getPosition()) || "FureADC".equals(uSD.getPosition())
+				|| "ADSupport".equals(uSD.getPosition())) {
+			return aDDmg.getDamage(uSD.getBattlePower().getAttackPower());
+		}else if("Assassin".equals(uSD.getPosition())) {
+			return assassinDmg.getDamage(uSD.getBattlePower().getAttackPower());
+		}else if("Fighter".equals(uSD.getPosition()) || "FighterTank".equals(uSD.getPosition())
+				|| "DealSupport".equals(uSD.getPosition())) {
+			return fighterDmg.getDamage(uSD.getBattlePower().getAttackPower());
+		}else if("Mage".equals(uSD.getPosition()) || "FureMage".equals(uSD.getPosition())
+				|| "MageSupport".equals(uSD.getPosition()) || "MageTank".equals(uSD.getPosition())) {
+			return mageDmg.getDamage(uSD.getBattlePower().getAttackPower());
+		}else if("Tank".equals(uSD.getPosition()) || "FureTank".equals(uSD.getPosition())) {
+			return tankDmg.getDamage(uSD.getBattlePower().getAttackPower());
 		}else {
-			return supportDmg.getDamage(attackPower);
+			return supportDmg.getDamage(uSD.getBattlePower().getAttackPower());
 		}
 	}
 }

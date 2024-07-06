@@ -53,17 +53,21 @@ public class ExtractingValue {
 				unitList.add(bpFunction.apply(team.get(i).getBattlePower()));
 			}
 		}
+		if(unitList.isEmpty()) {
+			return 7;
+		}
 		this.returnFlagMin = 0;
 		this.returnFlagMax = 0;
 		int returnValue = random.nextInt(unitP);
 		for(int i=0; i<unitList.size(); i++){
 			this.returnFlagMax = unitList.get(i);
 			if(returnFlagMin<=returnValue && returnValue<returnFlagMax) {
-				return i+1;
+				return i;
 			}else {
 				this.returnFlagMin = unitList.get(i);
 			}
 		}
+		return 7;
 	}
 
 }
