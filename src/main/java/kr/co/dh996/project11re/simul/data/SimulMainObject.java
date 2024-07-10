@@ -35,4 +35,14 @@ public class SimulMainObject {
 		this.battlePowerList = new ArrayList<>();
 	}
 
+	public void applyDataToMO(TurnData turnData) {
+		// TODO Auto-generated method stub
+        this.usingSimulProcess.setKillU(turnData.getKillU());
+        this.usingSimulProcess.setKillE(turnData.getKillE());
+        this.simulLogList.addAll(turnData.getTurnLog());
+        this.simulDataList.isEmpty();
+        this.simulDataList.addAll(turnData.getUserTeam());
+        this.simulDataList.addAll(turnData.getEnemyTeam());
+	}
+
 }

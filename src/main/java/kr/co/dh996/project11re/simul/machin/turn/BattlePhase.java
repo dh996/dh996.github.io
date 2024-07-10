@@ -27,6 +27,7 @@ public class BattlePhase {
 	private int attackTeam;
 	private int attackChamp;
 	private int deffendChamp;
+	private int retireFlag;
 	private Queue<Integer> attackTeamList;
 	
 	@Autowired
@@ -41,10 +42,11 @@ public class BattlePhase {
         this.attackTeam = 0;
         this.attackChamp = 0;
         this.deffendChamp = 0;
+        this.retireFlag = 0;
         this.attackTeamList = new LinkedList<>();
 	}
 
-	public void battleStart(TurnData turnData, int round, String sid, boolean towerA) {
+	public int battleStart(TurnData turnData, int round, String sid, boolean towerA) {
 		// TODO Auto-generated method stub
 		this.round = round;
 		this.sid = sid;
@@ -61,9 +63,12 @@ public class BattlePhase {
   		if(towerA) {
   			diveDemeritte(turnData); //전투지형 타워 생존여부에 따른 유불리를 설정합니다.
   		}
+  		int turnCheck;
   		do {
   		    battleProcess(turnData); //전투 과정을 실행합니다.
-  		}while(turnCheck(turnData)); //전투 종료를 판정합니다.
+  		    turnCheck = turnCheck(turnData); //전투 종료를 판정합니다.
+  		}while(turnCheck>2);
+  		return turnCheck;
 	}
 
 	//선제공격 여부에 따른 유불리를 설정합니다.
@@ -140,8 +145,10 @@ public class BattlePhase {
 	private boolean checkBattleBalance(TurnData turnData) {
 		// TODO Auto-generated method stub
 		if(extractingValue.unitJudgment(turnData.getUserTeam(), BattlePower::getAttackSpeed) == 0) {
+			retireFlag ++;
 			return true;
 		}else if(extractingValue.unitJudgment(turnData.getEnemyTeam(), BattlePower::getAttackSpeed) == 0){
+			retireFlag ++;
 			return true;
 		}else {
 			return false;
@@ -254,16 +261,35 @@ public class BattlePhase {
 		for(int i=0; i<attackTeam.size(); i++) {
 			if(RetireCheck.retireCheck(attackTeam.get(i)) && i != attackChamp){
 				attackTeam.get(i).setAssist(attackTeam.get(i).getAssist()+1);
+				attackTeam.get(i).getBattlePower().setRoundAssist(
+						attackTeam.get(i).getBattlePower().getRoundAssist()+1);
 			}else if(i == attackChamp) {
 				attackTeam.get(i).setKill(attackTeam.get(i).getKill()+1);
+				attackTeam.get(i).getBattlePower().setRoundKill(
+						attackTeam.get(i).getBattlePower().getRoundKill()+1);
 			}
 		}
 		defChamp.setDeath(defChamp.getDeath()+1);
+		defChamp.getBattlePower().setRoundDeath(
+				defChamp.getBattlePower().getRoundDeath()+1);
 	}
 
 	//전투 종료 여부를 판정합니다.
-	private boolean turnCheck(TurnData turnData) {
+	private int turnCheck(TurnData turnData) {
 		// TODO Auto-generated method stub
-		return false;
+		if(retireFlag>5) { //한쪽이 전투 턴을 모두 소비하면 수 턴 이후에 퇴각합니다.
+			if(extractingValue.unitJudgment(turnData.getUserTeam(), BattlePower::getAttackSpeed) == 0){
+				return 1; //아군 공격 횟수가 없는 경우
+			}else if(extractingValue.unitJudgment(turnData.getEnemyTeam(), BattlePower::getAttackSpeed) == 0){
+				return 0; //적군 공격 횟수가 없는 경우
+			}
+		}
+		if(RetireCheck.retireCheck(turnData.getUserTeam())) { //한쪽 팀이 전멸하면 종료합니다.
+			return 1;
+		}else if(RetireCheck.retireCheck(turnData.getEnemyTeam())) {
+			return 0;
+		}else {
+			return 2;
+		}
 	}
 }

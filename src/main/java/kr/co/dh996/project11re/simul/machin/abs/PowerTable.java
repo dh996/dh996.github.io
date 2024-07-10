@@ -41,7 +41,7 @@ public abstract class PowerTable {
 	protected void setDefaultPower(BattlePower battlePower) {
 		// TODO Auto-generated method stub
 		setPower(battlePower, (defaultHp*scale)/10, (defaultAp*scale)/15,
-				(defaultSp*scale)/30, (defaultIp*scale)/10, (defaultAg*scale)/10);
+				(defaultSp*scale)/20, (defaultIp*scale)/10, (defaultAg*scale)/10);
 		battlePower.setAttackSpeed(defaultAs);
 		battlePower.setRoundKill(0);
 		battlePower.setRoundDeath(0);
