@@ -107,5 +107,8 @@ public class TakeAdventage {
 	//타워 공격 기능을 수행합니다.
 	private void setTowerAdv(SimulMainObject simulMO, int turnWin) {
 		// TODO Auto-generated method stub
+		//지형 정보, 승리 팀 참조 어떤 타워 데이터 불러올지 결정
+		//불러온 타워 데이터 참조 대미지 입히는 로직 작성
+		//타워를 공격하고 sp가 남았을 경우 다음 타워 공격
 	}
 }
