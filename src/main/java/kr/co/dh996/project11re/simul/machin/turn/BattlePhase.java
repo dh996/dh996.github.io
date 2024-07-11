@@ -67,7 +67,7 @@ public class BattlePhase {
   		do {
   		    battleProcess(turnData); //전투 과정을 실행합니다.
   		    turnCheck = turnCheck(turnData); //전투 종료를 판정합니다.
-  		}while(turnCheck>2);
+  		}while(turnCheck<2);
   		return turnCheck;
 	}
 
