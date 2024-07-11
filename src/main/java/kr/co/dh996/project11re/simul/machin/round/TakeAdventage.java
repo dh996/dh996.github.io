@@ -35,7 +35,7 @@ public class TakeAdventage {
 		this.sid = null;
 	}
 
-	public void setAdv(SimulMainObject simulMO) {
+	public void setAdv(SimulMainObject simulMO, int turnWin) {
 		// TODO Auto-generated method stub
 		init(simulMO, turnWin); //기본 변수를 대입합니다.
 		setWinTeam(simulMO); //승리 팀 정보를 가져옵니다.
