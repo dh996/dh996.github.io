@@ -56,9 +56,12 @@ public class Round {
     	roundManage.incRound(simulMO); //라운드 카운트를 1회 증가시킵니다.
 		fieldSetting.setField(simulMO); //이번 라운드 전투 지형을 설정합니다.
 		champGrow.setGrow(simulMO); //이번 라운드 챔피언 성장 수치를 결정합니다.
-		powerSetting.setPower(simulMO); //이번 라운드 전투력 수치를 결정합니다.
-		int turnWin = turn.turnStart(simulMO); //전투 턴을 진행합니다.
-		takeAdventage.setAdv(simulMO, turnWin); //전투 결과에 따른 어드밴티지를 결정합니다.
+		if(!"freeze".equals(simulMO.getUsingSimulProcess().getField())){
+			//전투지형이 휴식판정일 시 전투 기능 진행을 생략합니다.
+			powerSetting.setPower(simulMO); //이번 라운드 전투력 수치를 결정합니다.
+			int turnWin = turn.turnStart(simulMO); //전투 턴을 진행합니다.
+			takeAdventage.setAdv(simulMO, turnWin); //전투 결과에 따른 어드밴티지를 결정합니다.
+		}
 		objectSetting.setObj(simulMO); //이번 라운드의 오브젝트 관리 기능을 실행합니다.
 		roundManage.recodingSimulProcess(simulMO); //이번 라운드의 전체적 진행상황을 저장합니다.
     }

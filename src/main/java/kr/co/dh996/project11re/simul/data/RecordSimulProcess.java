@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RecodSimulProcess extends SimulProcess {
+public class RecordSimulProcess extends SimulProcess {
 
 	//진행과정 기록을 위한 챔피언 생존여부 확인 관련 변수를 추가합니다.
 	//진행과정 기록 관련 기능 역시 수행합니다.
@@ -24,7 +24,7 @@ public class RecodSimulProcess extends SimulProcess {
     private int c5e;
     
     //진행과정 기록을 위한 생성자입니다.
-    RecodSimulProcess(UsingSimulProcess usingSimulProcess, 
+    public RecordSimulProcess(UsingSimulProcess usingSimulProcess, 
     		List<UsingSimulData> simulDataList, String sid){
     	super();
     	this.sid = sid;

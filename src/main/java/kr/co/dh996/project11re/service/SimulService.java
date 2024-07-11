@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.dh996.project11re.simul.data.RecodSimulProcess;
+import kr.co.dh996.project11re.simul.data.RecordSimulProcess;
 import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import kr.co.dh996.project11re.simul.data.SimulLog;
 import kr.co.dh996.project11re.dto.ChampDTO;
@@ -13,7 +13,7 @@ import kr.co.dh996.project11re.dto.ChampDTO;
 public class SimulService {
 	//데이터베이스와 연결된 서비스 클래스입니다.
 	
-	public void saveSimul(List<RecordSimulData> recordData, List<RecodSimulProcess> recordProcess,
+	public void saveSimul(List<RecordSimulData> recordData, List<RecordSimulProcess> recordProcess,
 			List<SimulLog> recordLog) {
 		// TODO Auto-generated method stub
 		saveInfo();
@@ -32,7 +32,7 @@ public class SimulService {
 		
 	}
 	
-	private void saveProcess(List<RecodSimulProcess> simulProcessList) {
+	private void saveProcess(List<RecordSimulProcess> simulProcessList) {
 		// TODO Auto-generated method stub
 		
 	}

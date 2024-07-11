@@ -18,7 +18,7 @@ public class SimulMainObject {
 	private int winLose;
 	private UsingSimulProcess usingSimulProcess;
 	private List<UsingSimulData> simulDataList;
-	private List<RecodSimulProcess> simulProcessList;
+	private List<RecordSimulProcess> simulProcessList;
 	private List<SimulLog> simulLogList;
 	private List<BattlePower> battlePowerList;
 	
