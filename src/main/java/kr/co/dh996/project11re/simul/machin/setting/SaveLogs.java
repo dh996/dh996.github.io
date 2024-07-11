@@ -69,4 +69,11 @@ public class SaveLogs {
 		// TODO Auto-generated method stub
 		list.add(new SimulLog(sid, round, list.size()+1, tower, "destroy", team));
 	}
+
+	//오브젝트 소환 관련 로그를 저장합니다.
+	public static void saveSpawnLog(String sid, int round, List<SimulLog> simulLogList,
+			String obj, int team) {
+		// TODO Auto-generated method stub
+		simulLogList.add(new SimulLog(sid, round, simulLogList.size()+1, obj, "spawn", team));
+	}
 }

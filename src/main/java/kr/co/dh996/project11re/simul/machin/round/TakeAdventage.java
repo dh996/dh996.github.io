@@ -75,7 +75,7 @@ public class TakeAdventage {
 	private boolean setObjAdv(SimulMainObject simulMO) {
 		// TODO Auto-generated method stub
 		boolean getObj = false;
-		if(totalSP>500 && "elder".equals(simulMO.getUsingSimulProcess().getDragonNest())) {
+		if(totalSP>500 && "장로".equals(simulMO.getUsingSimulProcess().getDragonNest())) {
 			getObj(simulMO, "elder", 500);
 			getObj = true;
 		} //우선순위 1 장로
@@ -96,20 +96,20 @@ public class TakeAdventage {
 		if("elder".equals(obj)){
 			if(turnWin == 0) {
 				simulMO.getUsingSimulProcess().setElderU(1);
-				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "elder dragon", turnWin);
+				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "장로 드래곤", turnWin);
 			}else if(turnWin == 1) {
 				simulMO.getUsingSimulProcess().setElderE(1);
-				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "elder dragon", turnWin);
+				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "장로 드래곤", turnWin);
 			}
 			simulMO.getUsingSimulProcess().setDragonNest("x");
 		}
 		if("baron".equals(obj)){
 			if(turnWin == 0) {
 				simulMO.getUsingSimulProcess().setBaronU(1);
-				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "baron", turnWin);
+				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "내셔 남작", turnWin);
 			}else if(turnWin == 1) {
 				simulMO.getUsingSimulProcess().setBaronE(1);
-				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "baron", turnWin);
+				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(), "내셔 남작", turnWin);
 			}
 			simulMO.getUsingSimulProcess().setBaronNest(0);
 		}
@@ -119,13 +119,13 @@ public class TakeAdventage {
 				dragons.add(simulMO.getUsingSimulProcess().getDragonNest());
 				simulMO.getUsingSimulProcess().setDragonU(dragons);
 				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(),
-						simulMO.getUsingSimulProcess().getDragonNest()+"dragon", turnWin);
+						simulMO.getUsingSimulProcess().getDragonNest()+" 드래곤", turnWin);
 			}else if(turnWin == 1) {
 				List<String> dragons = simulMO.getUsingSimulProcess().getDragonE();
 				dragons.add(simulMO.getUsingSimulProcess().getDragonNest());
 				simulMO.getUsingSimulProcess().setDragonE(dragons);
 				SaveLogs.saveHuntingLog(sid, round, simulMO.getSimulLogList(),
-						simulMO.getUsingSimulProcess().getDragonNest()+"dragon", turnWin);
+						simulMO.getUsingSimulProcess().getDragonNest()+" 드래곤", turnWin);
 			}
 			simulMO.getUsingSimulProcess().setDragonNest("x");
 		}

@@ -12,6 +12,7 @@ public class UsingSimulProcess extends SimulProcess {
 	//시뮬레이션 가동에 필요한 오브젝트 소환 기능을 위한 변수를 추가합니다.
 	private int dragonCount;
 	private int baronCount;
+	private String lastDragon;
 	
 	public UsingSimulProcess(){
 		super();
@@ -61,5 +62,6 @@ public class UsingSimulProcess extends SimulProcess {
 	    setRtE(1000);
 	    this.dragonCount = 0;
 	    this.baronCount = 0;
+	    this.lastDragon = "x";
 	}
 }

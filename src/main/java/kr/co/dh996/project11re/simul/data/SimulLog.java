@@ -64,6 +64,8 @@ public class SimulLog {
 			}else {
 				this.message = "적군 팀이 "+message+"을/를 파괴하였습니다.";
 			}
+		}else if("spawn".equals(type)) {
+			this.message = message+"이/가 소환되었습니다.";
 		}
 	}
 	
