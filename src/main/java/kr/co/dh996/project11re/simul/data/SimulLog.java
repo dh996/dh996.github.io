@@ -52,6 +52,18 @@ public class SimulLog {
 			}else {
 				this.message = "아군 팀의 "+message+"이/가 사망하였습니다.";
 			}
+		}else if("hunt".equals(type)) {
+			if(team == 0) {
+				this.message = "아군 팀이 "+message+"을/를 사냥하였습니다.";
+			}else {
+				this.message = "적군 팀이 "+message+"을/를 사냥하였습니다.";
+			}
+		}else if("destroy".equals(type)) {
+			if(team == 0) {
+				this.message = "아군 팀이 "+message+"을/를 파괴하였습니다.";
+			}else {
+				this.message = "적군 팀이 "+message+"을/를 파괴하였습니다.";
+			}
 		}
 	}
 	
@@ -65,6 +77,12 @@ public class SimulLog {
 				this.message = "아군 팀의 "+message1+"이/가 "+message2+"레벨로 성장하였습니다.";
 			}else {
 				this.message = "적군 팀의 "+message1+"이/가 "+message2+"레벨로 성장하였습니다.";
+			}
+		}else if("siege".equals(type)) {
+			if(team == 0) {
+				this.message = "아군 팀이 적군의 "+message1+"에게 "+message2+"의 피해를 입혔습니다.";
+			}else {
+				this.message = "적군 팀이 아군의 "+message1+"에게 "+message2+"의 피해를 입혔습니다.";
 			}
 		}
 	}

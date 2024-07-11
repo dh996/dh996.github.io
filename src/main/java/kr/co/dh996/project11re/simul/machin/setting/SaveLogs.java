@@ -48,4 +48,25 @@ public class SaveLogs {
 		// TODO Auto-generated method stub
 		turnLog.add(new SimulLog(sid, round, logSize+1, "dive", team));
 	}
+
+	//오브젝트 사냥 관련 로그를 저장합니다.
+	public static void saveHuntingLog(String sid, int round, List<SimulLog> simulLogList,
+			String obj, int team) {
+		// TODO Auto-generated method stub
+		simulLogList.add(new SimulLog(sid, round, simulLogList.size()+1, obj, "hunt", team));
+	}
+
+	//공성 관련 로그를 저장합니다.
+	public static void saveSiegeLog(String sid, int round, List<SimulLog> list,
+			String tower, String dmg, int team) {
+		// TODO Auto-generated method stub
+		list.add(new SimulLog(sid, round, list.size()+1, tower, dmg, "siege", team));
+	}
+
+	//구조물 파괴 관련 로그를 저장합니다.
+	public static void saveDestroyLog(String sid, int round, List<SimulLog> list,
+			String tower, int team) {
+		// TODO Auto-generated method stub
+		list.add(new SimulLog(sid, round, list.size()+1, tower, "destroy", team));
+	}
 }
