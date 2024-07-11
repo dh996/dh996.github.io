@@ -9,7 +9,15 @@ public class RoundCheck implements WinCheck {
 	@Override
 	public int winCheck(SimulMainObject simulMO) {
 		// TODO Auto-generated method stub
-		return 0;
+		if(simulMO.getUsingSimulProcess().getNexusU() == 0) {
+			simulMO.setWinLose(1);
+			return 1;
+		}else if(simulMO.getUsingSimulProcess().getNexusE() == 0) {
+			simulMO.setWinLose(0);
+			return 0;
+		}else {
+			return 2;
+		}
 	}
 
 }

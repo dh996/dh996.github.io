@@ -49,7 +49,7 @@ public class Round {
     public void roundStart(SimulMainObject simulMO) {
     	do {
     		roundLoop(simulMO);
-        } while (roundCheck.winCheck(simulMO)>2); //종료 조건을 만족할때까지 라운드루프를 반복합니다.
+        } while (roundCheck.winCheck(simulMO)<2); //종료 조건을 만족할때까지 라운드루프를 반복합니다.
     }
 
     public void roundLoop(SimulMainObject simulMO) {
