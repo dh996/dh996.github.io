@@ -22,6 +22,7 @@ public class TakeAdventage {
 	private List<UsingSimulData> winTeam;
 	private int turnWin;
 	private int totalSP;
+	private int destroyT;
 	private int round;
 	private String sid;
 	
@@ -31,6 +32,7 @@ public class TakeAdventage {
 		this.winTeam = new ArrayList<>();
 		this.turnWin = 0;
 		this.totalSP = 0;
+		this.destroyT = 0;
 		this.round = 0;
 		this.sid = null;
 	}
@@ -136,6 +138,7 @@ public class TakeAdventage {
 		String line = getLine(simulMO.getUsingSimulProcess().getField());
 		//불러온 타워 데이터 참조 대미지 입히는 로직 작성
 		attackTower(simulMO, line);
+		setMOTower(simulMO); //부순 타워 갯수를 객체에 저장
 	}
 
 	//지형 정보, 승리 팀 참조 어떤 타워 데이터 불러올지 결정
@@ -301,6 +304,7 @@ public class TakeAdventage {
 				SaveLogs.saveSiegeLog(sid, round, list, tower, Integer.toString(dmg), turnWin);
 				if(rHp == 0) { //남은 체력이 없으면 파괴 로그도 저장합니다.
 					SaveLogs.saveDestroyLog(sid, round, list, tower, turnWin);
+					this.destroyT ++;
 				}
 				return rHp;
 			}else {
@@ -308,6 +312,18 @@ public class TakeAdventage {
 			}
 		}else {
 			return hp;
+		}
+	}
+
+	//부순 타워 갯수를 객체에 저장
+	private void setMOTower(SimulMainObject simulMO) {
+		// TODO Auto-generated method stub
+		if(turnWin == 0) {
+			simulMO.getUsingSimulProcess().setTowerU(
+					simulMO.getUsingSimulProcess().getTowerU()+destroyT);
+		}else {
+			simulMO.getUsingSimulProcess().setTowerE(
+					simulMO.getUsingSimulProcess().getTowerE()+destroyT);
 		}
 	}
 }
