@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
+import kr.co.dh996.project11re.simul.machin.round.BuffControl;
 import kr.co.dh996.project11re.simul.machin.round.ChampGrow;
 import kr.co.dh996.project11re.simul.machin.round.FieldSetting;
 import kr.co.dh996.project11re.simul.machin.round.ObjectSetting;
@@ -21,6 +22,7 @@ public class Round {
     private final ChampGrow champGrow;
     private final PowerSetting powerSetting;
     private final RoundCheck roundCheck;
+    private final BuffControl buffControl;
     private final TakeAdventage takeAdventage;
     private final ObjectSetting objectSetting;
     private final Turn turn;
@@ -32,6 +34,7 @@ public class Round {
             ChampGrow champGrow,
             PowerSetting powerSetting,
             RoundCheck roundCheck,
+            BuffControl buffControl,
             TakeAdventage takeAdventage,
             ObjectSetting objectSetting,
             Turn turn) {
@@ -40,6 +43,7 @@ public class Round {
         this.champGrow = champGrow;
         this.powerSetting = powerSetting;
         this.roundCheck = roundCheck;
+        this.buffControl = buffControl;
         this.takeAdventage = takeAdventage;
         this.objectSetting = objectSetting;
         this.turn = turn;
@@ -62,6 +66,7 @@ public class Round {
 			int turnWin = turn.turnStart(simulMO); //전투 턴을 진행합니다.
 			takeAdventage.setAdv(simulMO, turnWin); //전투 결과에 따른 어드밴티지를 결정합니다.
 		}
+		buffControl.setBuff(simulMO); //기간제 버프 관리 기능입니다.
 		objectSetting.setObj(simulMO); //이번 라운드의 오브젝트 관리 기능을 실행합니다.
 		roundManage.recodingSimulProcess(simulMO); //이번 라운드의 전체적 진행상황을 저장합니다.
     }
