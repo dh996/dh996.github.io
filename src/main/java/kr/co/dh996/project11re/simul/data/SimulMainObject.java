@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import kr.co.dh996.project11re.simul.machin.setting.CreateSid;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class SimulMainObject {
 	
 	//시뮬레이션은 이 인스턴스를 참조하여 실행된다. 이 인스턴스는 그 정보를 담아두고 있는 것만을 목적으로 하려 한다.

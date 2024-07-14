@@ -4,10 +4,12 @@ import java.util.List;
 
 import kr.co.dh996.project11re.dto.ChampDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class UsingSimulData extends SimulData {
 	//시뮬레이션 기능에만 사용되는 변수들이 추가됩니다.
 

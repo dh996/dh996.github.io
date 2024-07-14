@@ -3,10 +3,12 @@ package kr.co.dh996.project11re.simul.data;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class RecordSimulProcess extends SimulProcess {
 
 	//진행과정 기록을 위한 챔피언 생존여부 확인 관련 변수를 추가합니다.

@@ -3,10 +3,12 @@ package kr.co.dh996.project11re.simul.data;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class SimulProcess {
 
 	private int round;

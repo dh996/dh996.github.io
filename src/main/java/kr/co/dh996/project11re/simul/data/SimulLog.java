@@ -1,10 +1,12 @@
 package kr.co.dh996.project11re.simul.data;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class SimulLog {
 
 	private String sid;

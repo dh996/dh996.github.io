@@ -1,10 +1,12 @@
 package kr.co.dh996.project11re.simul.data;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class RecordSimulData extends SimulData{
 	//데이터베이스에 저장하기 위한 변수를 추가합니다
 	
