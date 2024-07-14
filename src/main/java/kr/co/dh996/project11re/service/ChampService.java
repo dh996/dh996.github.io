@@ -1,6 +1,7 @@
 package kr.co.dh996.project11re.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +40,9 @@ public class ChampService {
 		String jsonData = dataService.fetchChampionData(version);
         List<ChampDTO> champDTOList = jsonService.parseChampionData(jsonData, version);
         ChampVersion champVersion = new ChampVersion();
+        List<ChampName> champNameList = new ArrayList<>();
+        List<ChampTags> champTagsList = new ArrayList<>();
         champVersion.setChamp_version(version);
-        champVersionRepository.save(champVersion);
 
         for (ChampDTO champDTO : champDTOList) {
             // Champ 저장
@@ -48,7 +50,7 @@ public class ChampService {
             champName.setChamp_version(version);
             champName.setChamp_id(champDTO.getChampID());
             champName.setChamp_name(champDTO.getChampName());
-            champNameRepository.save(champName);
+            champNameList.add(champName);
 
             // ChampTag 저장
             for (String tag : champDTO.getChampTags()) {
@@ -56,9 +58,12 @@ public class ChampService {
                 champTags.setChamp_version(version);
                 champTags.setChamp_id(champDTO.getChampID());
                 champTags.setChamp_tags(tag);
-                champTagsRepository.save(champTags);
+                champTagsList.add(champTags);
             }
         }
+        champVersionRepository.save(champVersion);
+        champNameRepository.saveAll(champNameList);
+        champTagsRepository.saveAll(champTagsList);
 	}
 
 	public boolean checkVersion(String version) {
