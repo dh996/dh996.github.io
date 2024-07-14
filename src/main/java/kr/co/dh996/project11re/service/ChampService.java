@@ -63,6 +63,6 @@ public class ChampService {
 
 	public boolean checkVersion(String version) {
 		// TODO Auto-generated method stub
-		return false;
+		return champVersionRepository.existsByChampVersion(version);
 	}
 }

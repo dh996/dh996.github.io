@@ -19,6 +19,9 @@ public class ChampController {
 	@PostMapping("/version/up")
 	public String updateVersion(@RequestParam("version") String version, Model model) {
 		if(champService.checkVersion(version)) {
+            model.addAttribute("message", "이미 저장된 버전입니다.");
+			return "/version/error";
+		}else {
 			try {
 	            champService.updateVersion(version);
 	            model.addAttribute("message", "버전 업데이트 성공");
@@ -27,9 +30,6 @@ public class ChampController {
 	            model.addAttribute("message", "에러발생: " + e.getMessage());
 				return "/version/error";
 	        } 
-		}else {
-            model.addAttribute("message", "이미 저장된 버전입니다.");
-			return "/version/error";
 		}
 	}
 }
