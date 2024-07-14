@@ -1,6 +1,7 @@
 package kr.co.dh996.project11re.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -19,12 +20,9 @@ public class SimulProcessT {
 	@ManyToOne
 	@JoinColumn(name = "simul_sid", referencedColumnName = "simul_sid", foreignKey = @ForeignKey(name = "fk_list_pt"))
 	private String simul_sid;
-
-	@Column(name = "simul_round")
-	private int simul_round;
 	
-	@Column(name = "simul_team")
-	private int simul_team;
+	@Embedded
+	ProcessEmbedded processEmbedded;
 	
 	@Column(name = "kill")
 	private int kill;

@@ -1,6 +1,7 @@
 package kr.co.dh996.project11re.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -23,11 +24,8 @@ public class SimulLogs {
 	@Column(name = "simul_message")
 	private String simul_message;
 	
-	@Column(name = "simul_round")
-	private int simul_round;
-	
-	@Column(name = "simul_team")
-	private int simul_team;
+	@Embedded
+	ProcessEmbedded processEmbedded;
 	
 	@Column(name = "simul_num")
 	private int simul_num;
