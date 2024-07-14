@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import kr.co.dh996.project11re.simul.data.RecordSimulProcess;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,4 +32,13 @@ public class SimulProcessA {
 	
 	@Column(name = "simul_round")
 	private int simul_round;
+
+	public SimulProcessA(RecordSimulProcess recordProcess) {
+		// TODO Auto-generated constructor stub
+		this.simul_sid = recordProcess.getSid();
+		this.field = recordProcess.getField();
+		this.dragonnest = recordProcess.getDragonNest();
+		this.baronnest = recordProcess.getBaronNest();
+		this.simul_round = recordProcess.getRound();
+	}
 }

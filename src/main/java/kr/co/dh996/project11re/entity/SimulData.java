@@ -7,11 +7,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "simul_data")
 public class SimulData {
@@ -40,4 +43,16 @@ public class SimulData {
 	
 	@Column(name = "simul_assist")
 	private int simul_assist;
+
+	public SimulData(RecordSimulData recordData) {
+		// TODO Auto-generated constructor stub
+        this.simul_sid = recordData.getSid();
+        this.simul_champ = recordData.getChampName();
+        this.simul_team = recordData.getTeam();
+        this.simul_num = recordData.getNum();
+        this.simul_level = recordData.getLevel();
+        this.simul_kill = recordData.getKill();
+        this.simul_death = recordData.getDeath();
+        this.simul_assist = recordData.getAssist();
+	}
 }

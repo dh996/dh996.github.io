@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import kr.co.dh996.project11re.simul.data.RecordSimulProcess;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -95,4 +96,61 @@ public class SimulProcessT {
 	
 	@Column(name = "elder")
 	private int elder;
+	
+	public SimulProcessT(RecordSimulProcess recordProcess, ProcessEmbedded processEmbedded) {
+		// TODO Auto-generated constructor stub
+		this.simul_sid = recordProcess.getSid();
+		this.processEmbedded = processEmbedded;
+		if(processEmbedded.getSimul_team() == 0) {
+			this.kill = recordProcess.getKillU();
+			this.tower = recordProcess.getTowerU();
+			this.champ1 = recordProcess.getC1u();
+			this.champ2 = recordProcess.getC2u();
+			this.champ3 = recordProcess.getC3u();
+			this.champ4 = recordProcess.getC4u();
+			this.champ5 = recordProcess.getC5u();
+			this.top1 = recordProcess.getT1U();
+			this.top2 = recordProcess.getT2U();
+			this.top3 = recordProcess.getT3U();
+			this.topi = recordProcess.getTiU();
+			this.mid1 = recordProcess.getM1U();
+			this.mid2 = recordProcess.getM2U();
+			this.mid3 = recordProcess.getM3U();
+			this.midi = recordProcess.getMiU();
+			this.bot1 = recordProcess.getB1U();
+			this.bot2 = recordProcess.getB2U();
+			this.bot3 = recordProcess.getB3U();
+			this.boti = recordProcess.getBiU();
+			this.leftt = recordProcess.getLtU();
+			this.rightt = recordProcess.getRtU();
+			this.nexus = recordProcess.getNexusU();
+			this.baron = recordProcess.getBaronU();
+			this.elder = recordProcess.getElderU();
+		}else if(processEmbedded.getSimul_team() == 1) {
+			this.kill =recordProcess.getKillE();
+			this.tower = recordProcess.getTowerE();
+			this.champ1 = recordProcess.getC1e();
+			this.champ2 = recordProcess.getC2e();
+			this.champ3 = recordProcess.getC3e();
+			this.champ4 = recordProcess.getC4e();
+			this.champ5 = recordProcess.getC5e();
+			this.top1 = recordProcess.getT1E();
+			this.top2 = recordProcess.getT2E();
+			this.top3 = recordProcess.getT3E();
+			this.topi = recordProcess.getTiE();
+			this.mid1 = recordProcess.getM1E();
+			this.mid2 = recordProcess.getM2E();
+			this.mid3 = recordProcess.getM3E();
+			this.midi = recordProcess.getMiE();
+			this.bot1 = recordProcess.getB1E();
+			this.bot2 = recordProcess.getB2E();
+			this.bot3 = recordProcess.getB3E();
+			this.boti = recordProcess.getBiE();
+			this.leftt = recordProcess.getLtE();
+			this.rightt = recordProcess.getRtE();
+			this.nexus = recordProcess.getNexusE();
+			this.baron = recordProcess.getBaronE();
+			this.elder = recordProcess.getElderE();
+		}
+	}
 }

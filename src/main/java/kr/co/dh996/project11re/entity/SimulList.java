@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import kr.co.dh996.project11re.simul.data.SimulMainObject;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "simul_list")
 public class SimulList {
@@ -26,4 +29,12 @@ public class SimulList {
 	
 	@Column(name = "simul_winlose")
 	private int simul_winlose;
+
+	public SimulList(SimulMainObject simulMO) {
+		// TODO Auto-generated constructor stub
+		this.simul_sid = simulMO.getSid();
+		this.simul_player = simulMO.getUserName();
+		this.simul_version = simulMO.getVersion();
+		this.simul_winlose = simulMO.getWinLose();
+	}
 }

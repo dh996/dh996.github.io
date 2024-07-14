@@ -26,4 +26,11 @@ public class SimulProcessD {
 	
 	@Embedded
 	ProcessEmbedded processEmbedded;
+
+	public SimulProcessD(String sid, String dragon, ProcessEmbedded processEmbedded) {
+		// TODO Auto-generated constructor stub
+		this.simul_sid = sid;
+		this.dragon = dragon;
+		this.processEmbedded = processEmbedded;
+	}
 }

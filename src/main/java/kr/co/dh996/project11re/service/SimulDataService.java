@@ -1,18 +1,17 @@
-package kr.co.dh996.project11re.simul.machin.setting;
+package kr.co.dh996.project11re.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import kr.co.dh996.project11re.dto.ChampDTO;
 import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import kr.co.dh996.project11re.simul.data.UsingSimulData;
 
-@Component
-public class DefaultSetting {
-	//시뮬레이션 시작 전 기본적인 설정들을 담당하는 클래스입니다.
-	
+@Service
+public class SimulDataService {
+
 	//레코드 데이터 갈무리 기능입니다.
 	public List<RecordSimulData> generateRecordData(List<UsingSimulData> simulDataList, String sid) {
 		// TODO Auto-generated method stub
@@ -24,7 +23,7 @@ public class DefaultSetting {
 		return returnList;
 	}
 	
-	//유징 데이터 갈무리 기능입니다.
+	//시뮬레이션 데이터를 저장용으로 갈무리하는 기능입니다.
 	public List<UsingSimulData> generateUsingData(List<ChampDTO> champDTOList) {
 		// TODO Auto-generated method stub
 		List<UsingSimulData> returnList = new ArrayList<>();
@@ -36,4 +35,3 @@ public class DefaultSetting {
 		return returnList;
 	}
 }
-
