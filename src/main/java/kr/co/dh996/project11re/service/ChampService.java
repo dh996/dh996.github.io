@@ -20,7 +20,7 @@ import kr.co.dh996.project11re.repository.ChampVersionRepository;
 public class ChampService {
 	
 	private JsonService jsonService;
-	private DataService dataService;
+	private ChampDataService champDataService;
 	private final ChampVersionRepository champVersionRepository;
 	private final ChampNameRepository champNameRepository;
 	private final ChampTagsRepository champTagsRepository;
@@ -37,7 +37,7 @@ public class ChampService {
 	@Transactional
 	public void updateVersion(String version) throws IOException {
 		// TODO Auto-generated method stub
-		String jsonData = dataService.fetchChampionData(version);
+		String jsonData = champDataService.fetchChampionData(version);
         List<ChampDTO> champDTOList = jsonService.parseChampionData(jsonData, version);
         ChampVersion champVersion = new ChampVersion();
         List<ChampName> champNameList = new ArrayList<>();
@@ -69,5 +69,22 @@ public class ChampService {
 	public boolean checkVersion(String version) {
 		// TODO Auto-generated method stub
 		return champVersionRepository.existsByChampVersion(version);
+	}
+
+	@Transactional(readOnly = true)
+	public List<ChampDTO> getAllChampList(String version) {
+		// TODO Auto-generated method stub
+		return champNameRepository.findByChampVersionWithTags(version);
+	}
+
+	@Transactional(readOnly = true)
+	public List<ChampDTO> getChampList(List<String> usersPickChampList) {
+		// TODO Auto-generated method stub
+        return champNameRepository.findByChampIdsWithTags(usersPickChampList);
+	}
+
+	public String getLatestVersion() {
+		// TODO Auto-generated method stub
+		return champDataService.findLatestVersion(champVersionRepository.getAllVersions());
 	}
 }

@@ -6,17 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.dh996.project11re.service.ChampService;
 
 @Controller
+@RequestMapping("/version")
 public class ChampController {
 
-	@Autowired
 	private ChampService champService;
 	
-	@PostMapping("/version/up")
+	@Autowired
+	public ChampController(ChampService champService) {
+		this.champService = champService;
+	}
+	
+	@PostMapping("/up")
 	public String updateVersion(@RequestParam("version") String version, Model model) {
 		if(champService.checkVersion(version)) {
             model.addAttribute("message", "이미 저장된 버전입니다.");
