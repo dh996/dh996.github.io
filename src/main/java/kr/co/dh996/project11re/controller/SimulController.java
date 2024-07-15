@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,5 +38,11 @@ public class SimulController {
 	@PostMapping("/simul")
 	public String simulStart() {
 		return simulService.simulStart();
+	}
+	
+	@GetMapping("/simul/{sid}")
+	public String simulResult(@PathVariable String sid, Model model) {
+		model.addAttribute("simulDTO", simulService.getSimulDTO(sid));
+		return "simul/simul_result";
 	}
 }

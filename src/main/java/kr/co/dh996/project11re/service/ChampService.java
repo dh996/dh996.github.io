@@ -66,6 +66,7 @@ public class ChampService {
         champTagsRepository.saveAll(champTagsList);
 	}
 
+	@Transactional(readOnly = true)
 	public boolean checkVersion(String version) {
 		// TODO Auto-generated method stub
 		return champVersionRepository.existsByChampVersion(version);
@@ -83,6 +84,7 @@ public class ChampService {
         return champNameRepository.findByChampIdsWithTags(usersPickChampList);
 	}
 
+	@Transactional(readOnly = true)
 	public String getLatestVersion() {
 		// TODO Auto-generated method stub
 		return champDataService.findLatestVersion(champVersionRepository.getAllVersions());

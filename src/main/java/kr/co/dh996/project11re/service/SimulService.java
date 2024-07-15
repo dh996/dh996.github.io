@@ -12,6 +12,7 @@ import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import kr.co.dh996.project11re.simul.data.SimulLog;
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
 import kr.co.dh996.project11re.simul.program.Simulation;
+import kr.co.dh996.project11re.dto.SimulDTO;
 import kr.co.dh996.project11re.entity.ProcessEmbedded;
 import kr.co.dh996.project11re.entity.SimulData;
 import kr.co.dh996.project11re.entity.SimulList;
@@ -130,5 +131,11 @@ public class SimulService {
 			simulLogsList.add(simulLogs);
 		}
 		simulLogsRepository.saveAll(simulLogsList);
+	}
+
+	@Transactional(readOnly = true)
+	public SimulDTO getSimulDTO(String sid) {
+		// TODO Auto-generated method stub
+		return simulListRepository.findSimulInfo(sid);
 	}
 }
