@@ -11,7 +11,7 @@ import kr.co.dh996.project11re.simul.data.RecordSimulProcess;
 import kr.co.dh996.project11re.simul.data.RecordSimulData;
 import kr.co.dh996.project11re.simul.data.SimulLog;
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
-import kr.co.dh996.project11re.dto.ChampDTO;
+import kr.co.dh996.project11re.simul.program.Simulation;
 import kr.co.dh996.project11re.entity.ProcessEmbedded;
 import kr.co.dh996.project11re.entity.SimulData;
 import kr.co.dh996.project11re.entity.SimulList;
@@ -30,6 +30,7 @@ import kr.co.dh996.project11re.repository.SimulProcessTRepository;
 public class SimulService {
 	//데이터베이스와 연결된 서비스 클래스입니다.
 	
+	private Simulation simulation;
 	private SimulDataService simulDataService;
 	private final SimulDataRepository simulDataRepository;
 	private final SimulListRepository simulListRepository;
@@ -39,7 +40,8 @@ public class SimulService {
 	private final SimulProcessTRepository simulProcessTRepository;
 	
 	@Autowired
-	public SimulService(SimulDataService simulDataService,
+	public SimulService(Simulation simulation,
+			SimulDataService simulDataService,
 			SimulDataRepository simulDataRepository,
 			SimulListRepository simulListRepository,
 			SimulLogsRepository simulLogsRepository,
@@ -53,6 +55,11 @@ public class SimulService {
 		this.simulProcessARepository = simulProcessARepository;
 		this.simulProcessDRepository = simulProcessDRepository;
 		this.simulProcessTRepository = simulProcessTRepository;
+	}
+
+	public String simulStart() {
+		// TODO Auto-generated method stub
+		return simulation.simulation(simulDataService.getUserpick());
 	}
 	
 	@Transactional
@@ -124,15 +131,4 @@ public class SimulService {
 		}
 		simulLogsRepository.saveAll(simulLogsList);
 	}
-
-	public List<ChampDTO> getChampList(List<String> usersPickChampList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<ChampDTO> getAllChampList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

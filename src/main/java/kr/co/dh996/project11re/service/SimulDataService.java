@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.dh996.project11re.dto.ChampDTO;
 import kr.co.dh996.project11re.simul.data.RecordSimulData;
+import kr.co.dh996.project11re.simul.data.UsersPick;
 import kr.co.dh996.project11re.simul.data.UsingSimulData;
 
 @Service
@@ -33,5 +34,10 @@ public class SimulDataService {
 			returnList.add(addData);
 		}
 		return returnList;
+	}
+
+	public UsersPick getUserpick() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
