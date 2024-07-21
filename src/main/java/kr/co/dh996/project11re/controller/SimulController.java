@@ -28,27 +28,29 @@ public class SimulController {
 		this.champService = champService;
 		this.simulService = simulService;
 	}
-	
-	@GetMapping("/home")
+
+	//시뮬기본시험용페이지
+	@GetMapping("/homeTest")
 	public String simulHome(Model model) {
 		String version = champService.getLatestVersion();
 		model.addAttribute("version", version);
 		model.addAttribute("champDTOList", champService.getAllChampList(version));
 		model.addAttribute("id", "test"); //테스트용
-		return "simul/simulTest";
+		return "testPage/simulTest";
 	}//현재 버전값을 페이지를 접근할때마다 구하는방식
 	//허나 버전 업데이트 적용시 서버에 대표버전을 설정하고
 	//대표버전만 불러오는식으로 변경하게되면 작업량의 커다란 감소 기대가능
+
+	//시뮬결과시험용페이지
+	@GetMapping("/simul/{sid}")
+	public String simulResult(@PathVariable String sid, Model model) {
+		model.addAttribute("simulDTO", simulService.getSimulDTO(sid));
+		return "testPage/resultTest";
+	}
 	
 	@PostMapping("/simul")
 	@ResponseBody
 	public String simulStart(@RequestBody Map<String, Object> requestData) {
 		return simulService.simulStart(requestData);
-	}
-	
-	@GetMapping("/simul/{sid}")
-	public String simulResult(@PathVariable String sid, Model model) {
-		model.addAttribute("simulDTO", simulService.getSimulDTO(sid));
-		return "simul/simul_result";
 	}
 }

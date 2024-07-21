@@ -1,7 +1,7 @@
 package kr.co.dh996.project11re.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
 import kr.co.dh996.project11re.simul.data.SimulLog;
 import lombok.Getter;
