@@ -2,6 +2,7 @@ package kr.co.dh996.project11re.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,9 +59,9 @@ public class SimulService {
 		this.simulProcessTRepository = simulProcessTRepository;
 	}
 
-	public String simulStart() {
+	public String simulStart(Map<String, Object> requestData) {
 		// TODO Auto-generated method stub
-		return simulation.simulation(simulDataService.getUserpick());
+		return simulation.simulation(simulDataService.getUserpick(requestData));
 	}
 	
 	@Transactional

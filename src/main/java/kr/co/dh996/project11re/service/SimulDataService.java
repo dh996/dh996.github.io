@@ -2,6 +2,7 @@ package kr.co.dh996.project11re.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class SimulDataService {
 		return returnList;
 	}
 
-	public UsersPick getUserpick() {
+	public UsersPick getUserpick(Map<String, Object> requestData) {
 		// TODO Auto-generated method stub
 		return null;
 	}
