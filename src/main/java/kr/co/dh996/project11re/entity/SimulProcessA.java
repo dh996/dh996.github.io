@@ -9,11 +9,13 @@ import jakarta.persistence.Table;
 
 import kr.co.dh996.project11re.simul.data.RecordSimulProcess;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "simul_process_a")
 public class SimulProcessA {
 

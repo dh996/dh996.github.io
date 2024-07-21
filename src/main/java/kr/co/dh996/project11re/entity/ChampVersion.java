@@ -10,11 +10,13 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "champs_version")
 public class ChampVersion {
 
