@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -19,25 +20,29 @@ import lombok.Setter;
 @Entity
 @Table(name = "simul_logs")
 public class SimulLogs {
+	
+	@Id
+    @Column(name = "pk")
+    private int pk;
 
 	@ManyToOne
 	@JoinColumn(name = "simul_sid", referencedColumnName = "simul_sid", foreignKey = @ForeignKey(name = "fk_list_logs"))
-	private String simul_sid;
+	private SimulList simulSid;
 	
 	@Column(name = "simul_message")
-	private String simul_message;
+	private String simulMessage;
 	
 	@Embedded
 	ProcessEmbedded processEmbedded;
 	
 	@Column(name = "simul_num")
-	private int simul_num;
+	private int simulNum;
 
-	public SimulLogs(SimulLog recordLog, ProcessEmbedded processEmbedded) {
+	public SimulLogs(SimulList simulList, SimulLog recordLog, ProcessEmbedded processEmbedded) {
 		// TODO Auto-generated constructor stub
-		this.simul_sid = recordLog.getSid();
-		this.simul_message = recordLog.getMessage();
+		this.simulSid = simulList;
+		this.simulMessage = recordLog.getMessage();
 		this.processEmbedded = processEmbedded;
-		this.simul_num = recordLog.getNum();
+		this.simulNum = recordLog.getNum();
 	}
 }

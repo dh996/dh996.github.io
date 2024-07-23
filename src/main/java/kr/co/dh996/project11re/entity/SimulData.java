@@ -3,6 +3,7 @@ package kr.co.dh996.project11re.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -18,41 +19,45 @@ import lombok.Setter;
 @Entity
 @Table(name = "simul_data")
 public class SimulData {
+	
+	@Id
+    @Column(name = "pk")
+    private int pk;
 
 	@ManyToOne
 	@JoinColumn(name = "simul_sid", referencedColumnName = "simul_sid", foreignKey = @ForeignKey(name = "fk_list_data"))
-	private String simul_sid;
+	private SimulList simulSid;
 
 	@Column(name = "simul_champ")
-	private String simul_champ;
+	private String simulChamp;
 	
 	@Column(name = "simul_team")
-	private int simul_team;
+	private int simulTeam;
 	
 	@Column(name = "simul_num")
-	private int simul_num;
+	private int simulNum;
 	
 	@Column(name = "simul_level")
-	private int simul_level;
+	private int simulLevel;
 	
 	@Column(name = "simul_kill")
-	private int simul_kill;
+	private int simulKill;
 	
 	@Column(name = "simul_death")
-	private int simul_death;
+	private int simulDeath;
 	
 	@Column(name = "simul_assist")
-	private int simul_assist;
+	private int simulAssist;
 
-	public SimulData(RecordSimulData recordData) {
+	public SimulData(SimulList simulList, RecordSimulData recordData) {
 		// TODO Auto-generated constructor stub
-        this.simul_sid = recordData.getSid();
-        this.simul_champ = recordData.getChampName();
-        this.simul_team = recordData.getTeam();
-        this.simul_num = recordData.getNum();
-        this.simul_level = recordData.getLevel();
-        this.simul_kill = recordData.getKill();
-        this.simul_death = recordData.getDeath();
-        this.simul_assist = recordData.getAssist();
+		this.simulSid = simulList;
+        this.simulChamp = recordData.getChampName();
+        this.simulTeam = recordData.getTeam();
+        this.simulNum = recordData.getNum();
+        this.simulLevel = recordData.getLevel();
+        this.simulKill = recordData.getKill();
+        this.simulDeath = recordData.getDeath();
+        this.simulAssist = recordData.getAssist();
 	}
 }

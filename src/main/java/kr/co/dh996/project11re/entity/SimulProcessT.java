@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -19,10 +20,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "simul_process_t")
 public class SimulProcessT {
+	
+	@Id
+    @Column(name = "pk")
+    private int pk;
 
 	@ManyToOne
 	@JoinColumn(name = "simul_sid", referencedColumnName = "simul_sid", foreignKey = @ForeignKey(name = "fk_list_pt"))
-	private String simul_sid;
+	private SimulList simulSid;
 	
 	@Embedded
 	ProcessEmbedded processEmbedded;
@@ -99,11 +104,11 @@ public class SimulProcessT {
 	@Column(name = "elder")
 	private int elder;
 	
-	public SimulProcessT(RecordSimulProcess recordProcess, ProcessEmbedded processEmbedded) {
+	public SimulProcessT(SimulList simulList, RecordSimulProcess recordProcess, ProcessEmbedded processEmbedded) {
 		// TODO Auto-generated constructor stub
-		this.simul_sid = recordProcess.getSid();
+		this.simulSid = simulList;
 		this.processEmbedded = processEmbedded;
-		if(processEmbedded.getSimul_team() == 0) {
+		if(processEmbedded.getSimulTeam() == 0) {
 			this.kill = recordProcess.getKillU();
 			this.tower = recordProcess.getTowerU();
 			this.champ1 = recordProcess.getC1u();
@@ -128,7 +133,7 @@ public class SimulProcessT {
 			this.nexus = recordProcess.getNexusU();
 			this.baron = recordProcess.getBaronU();
 			this.elder = recordProcess.getElderU();
-		}else if(processEmbedded.getSimul_team() == 1) {
+		}else if(processEmbedded.getSimulTeam() == 1) {
 			this.kill =recordProcess.getKillE();
 			this.tower = recordProcess.getTowerE();
 			this.champ1 = recordProcess.getC1e();

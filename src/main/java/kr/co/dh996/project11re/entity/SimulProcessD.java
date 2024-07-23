@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -18,10 +19,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "simul_process_d")
 public class SimulProcessD {
+	
+	@Id
+    @Column(name = "pk")
+    private int pk;
 
 	@ManyToOne
 	@JoinColumn(name = "simul_sid", referencedColumnName = "simul_sid", foreignKey = @ForeignKey(name = "fk_list_pd"))
-	private String simul_sid;
+	private SimulList simulSid;
 	
 	@Column(name = "dragon")
 	private String dragon;
@@ -29,9 +34,9 @@ public class SimulProcessD {
 	@Embedded
 	ProcessEmbedded processEmbedded;
 
-	public SimulProcessD(String sid, String dragon, ProcessEmbedded processEmbedded) {
+	public SimulProcessD(SimulList simulList, String dragon, ProcessEmbedded processEmbedded) {
 		// TODO Auto-generated constructor stub
-		this.simul_sid = sid;
+		this.simulSid = simulList;
 		this.dragon = dragon;
 		this.processEmbedded = processEmbedded;
 	}

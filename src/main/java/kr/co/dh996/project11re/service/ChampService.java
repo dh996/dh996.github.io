@@ -39,31 +39,36 @@ public class ChampService {
 		// TODO Auto-generated method stub
 		String jsonData = champDataService.fetchChampionData(version);
         List<ChampDTO> champDTOList = jsonService.parseChampionData(jsonData, version);
-        ChampVersion champVersion = new ChampVersion();
+        ChampVersion champVersion = saveChampVersion(version); //엔티티 저장후 반환
         List<ChampName> champNameList = new ArrayList<>();
         List<ChampTags> champTagsList = new ArrayList<>();
-        champVersion.setChamp_version(version);
 
         for (ChampDTO champDTO : champDTOList) {
             // Champ 저장
             ChampName champName = new ChampName();
-            champName.setChamp_version(version);
-            champName.setChamp_id(champDTO.getChampID());
-            champName.setChamp_name(champDTO.getChampName());
+            champName.setChampVersion(champVersion);
+            champName.setChampId(champDTO.getChampID());
+            champName.setChampName(champDTO.getChampName());
             champNameList.add(champName);
 
             // ChampTag 저장
             for (String tag : champDTO.getChampTags()) {
                 ChampTags champTags = new ChampTags();
-                champTags.setChamp_version(version);
-                champTags.setChamp_id(champDTO.getChampID());
-                champTags.setChamp_tags(tag);
+                champTags.setChampVersion(champVersion);
+                champTags.setChampId(champName); //저장시 바뀌는 값 없기에 바로 db저장 이전 반영
+                champTags.setChampTags(tag);
                 champTagsList.add(champTags);
             }
         }
-        champVersionRepository.save(champVersion);
         champNameRepository.saveAll(champNameList);
         champTagsRepository.saveAll(champTagsList);
+	}
+
+	private ChampVersion saveChampVersion(String version) {
+		// TODO Auto-generated method stub
+		ChampVersion champVersion = new ChampVersion();
+        champVersion.setChampVersion(version);
+		return champVersionRepository.save(champVersion);
 	}
 
 	@Transactional(readOnly = true)

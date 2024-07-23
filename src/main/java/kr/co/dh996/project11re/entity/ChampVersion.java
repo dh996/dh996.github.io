@@ -17,20 +17,20 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "champs_version")
+@Table(name = "champ_version")
 public class ChampVersion {
 
 	@Id
 	@Column(name = "champ_version")
-	private String champ_version;
+	private String champVersion;
 	
 	@Column(name = "champ_updatetime", nullable = false)
-    private LocalDateTime champ_updatetime;
+    private LocalDateTime champUpdatetime;
 
     @PrePersist
     @PreUpdate
     protected void onUpdate() {
-    	champ_updatetime = LocalDateTime.now();
+    	champUpdatetime = LocalDateTime.now();
     }
 
 }

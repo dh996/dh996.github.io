@@ -12,6 +12,6 @@ public interface ChampVersionRepository extends JpaRepository<ChampVersion, Stri
 	//중복 체크 확인용
 	boolean existsByChampVersion(String champVersion);
 	
-	@Query("SELECT c.champ_version FROM ChampVersion c")
+	@Query("SELECT c.champVersion FROM ChampVersion c")
 	List<String> getAllVersions();
 }

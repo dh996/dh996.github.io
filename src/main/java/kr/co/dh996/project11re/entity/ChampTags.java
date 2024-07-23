@@ -3,6 +3,7 @@ package kr.co.dh996.project11re.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -15,17 +16,21 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "champs_tags")
+@Table(name = "champ_tags")
 public class ChampTags {
+	
+	@Id
+    @Column(name = "pk")
+    private int pk;
 
 	@ManyToOne
 	@JoinColumn(name = "champ_version", referencedColumnName = "champ_version", foreignKey = @ForeignKey(name = "fk_version_tags"))
-	private String champ_version;
+	private ChampVersion champVersion;
 	
 	@ManyToOne
 	@JoinColumn(name = "champ_id", referencedColumnName = "champ_id", foreignKey = @ForeignKey(name = "fk_name_tags"))
-	private String champ_id;
+	private ChampName champId;
 	
 	@Column(name = "champ_tags")
-	private String champ_tags;
+	private String champTags;
 }

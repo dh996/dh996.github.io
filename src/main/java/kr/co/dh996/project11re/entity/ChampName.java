@@ -16,17 +16,17 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "champs_name")
+@Table(name = "champ_name")
 public class ChampName {
 
 	@ManyToOne
 	@JoinColumn(name = "champ_version", referencedColumnName = "champ_version", foreignKey = @ForeignKey(name = "fk_version_name"))
-	private String champ_version;
+	private ChampVersion champVersion;
 	
 	@Id
 	@Column(name = "champ_id")
-	private String champ_id;
+	private String champId;
 	
 	@Column(name = "champ_name")
-	private String champ_name;
+	private String champName;
 }

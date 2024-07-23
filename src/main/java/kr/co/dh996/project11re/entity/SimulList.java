@@ -19,22 +19,22 @@ public class SimulList {
 
 	@Id
 	@Column(name = "simul_sid")
-	private String simul_sid;
+	private String simulSid;
 	
 	@Column(name = "simul_version")
-	private String simul_version;
+	private String simulVersion;
 	
 	@Column(name = "simul_player")
-	private String simul_player;
+	private String simulPlayer;
 	
 	@Column(name = "simul_winlose")
-	private int simul_winlose;
+	private int simulWinlose;
 
 	public SimulList(SimulMainObject simulMO) {
 		// TODO Auto-generated constructor stub
-		this.simul_sid = simulMO.getSid();
-		this.simul_player = simulMO.getUserName();
-		this.simul_version = simulMO.getVersion();
-		this.simul_winlose = simulMO.getWinLose();
+		this.simulSid = simulMO.getSid();
+		this.simulPlayer = simulMO.getUserName();
+		this.simulVersion = simulMO.getVersion();
+		this.simulWinlose = simulMO.getWinLose();
 	}
 }

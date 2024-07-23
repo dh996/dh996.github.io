@@ -67,32 +67,32 @@ public class SimulService {
 	@Transactional
 	public void saveSimul(SimulMainObject simulMO) {
 		// TODO Auto-generated method stub
-		SimulList simulList = new SimulList(simulMO);
+		SimulList simulList = saveList(simulMO);
 		List<RecordSimulData> recordDataList = simulDataService.generateRecordData(simulMO.getSimulDataList(), simulMO.getSid());
 		List<RecordSimulProcess> recordProcessList = simulMO.getSimulProcessList();
 		List<SimulLog> recordLogList = simulMO.getSimulLogList();
-		saveList(simulList);
-		saveData(recordDataList);
-		saveProcess(recordProcessList);
-		saveLog(recordLogList);
+		saveData(recordDataList, simulList);
+		saveProcess(recordProcessList, simulList);
+		saveLog(recordLogList, simulList);
 	}
 
-	private void saveList(SimulList simulList) {
+	private SimulList saveList(SimulMainObject simulMO) {
 		// TODO Auto-generated method stub
-		simulListRepository.save(simulList);
+		SimulList simulList = new SimulList(simulMO);
+		return simulListRepository.save(simulList);
 	}
 
-	private void saveData(List<RecordSimulData> recordDataList) {
+	private void saveData(List<RecordSimulData> recordDataList, SimulList simulList) {
 		// TODO Auto-generated method stub
 		List<SimulData> simulDataList = new ArrayList<>();
 	    for (RecordSimulData recordData : recordDataList) {
-	        SimulData simulData = new SimulData(recordData);
+	        SimulData simulData = new SimulData(simulList, recordData);
 	        simulDataList.add(simulData);
 	    }
 	    simulDataRepository.saveAll(simulDataList);
 	}
 	
-	private void saveProcess(List<RecordSimulProcess> recordProcessList) {
+	private void saveProcess(List<RecordSimulProcess> recordProcessList, SimulList simulList) {
 		// TODO Auto-generated method stub
 		List<SimulProcessA> simulProcessAList = new ArrayList<>();
 		List<SimulProcessD> simulProcessDList = new ArrayList<>();
@@ -101,17 +101,15 @@ public class SimulService {
 			//나중에 레코드시뮬프로세스 구조분할하던지 해야할듯
 			ProcessEmbedded processEmbedded0 = new ProcessEmbedded(recordProcess.getRound(), 0);
 			ProcessEmbedded processEmbedded1 = new ProcessEmbedded(recordProcess.getRound(), 1);
-			SimulProcessA simulProcessA = new SimulProcessA(recordProcess);
-			SimulProcessT simulProcessT0 = new SimulProcessT(recordProcess, processEmbedded0);
-			SimulProcessT simulProcessT1 = new SimulProcessT(recordProcess, processEmbedded1);
+			SimulProcessA simulProcessA = new SimulProcessA(simulList, recordProcess);
+			SimulProcessT simulProcessT0 = new SimulProcessT(simulList, recordProcess, processEmbedded0);
+			SimulProcessT simulProcessT1 = new SimulProcessT(simulList, recordProcess, processEmbedded1);
 			for (String dragon : recordProcess.getDragonU()) {
-				SimulProcessD simulProcessD = new SimulProcessD(
-						recordProcess.getSid(), dragon, processEmbedded0);
+				SimulProcessD simulProcessD = new SimulProcessD(simulList, dragon, processEmbedded0);
 				simulProcessDList.add(simulProcessD);
 			}
 			for (String dragon : recordProcess.getDragonE()) {
-				SimulProcessD simulProcessD = new SimulProcessD(
-						recordProcess.getSid(), dragon, processEmbedded1);
+				SimulProcessD simulProcessD = new SimulProcessD(simulList, dragon, processEmbedded1);
 				simulProcessDList.add(simulProcessD);
 			}
 			simulProcessAList.add(simulProcessA);
@@ -123,12 +121,12 @@ public class SimulService {
 		simulProcessTRepository.saveAll(simulProcessTList);
 	}
 
-	private void saveLog(List<SimulLog> recordLogList) {
+	private void saveLog(List<SimulLog> recordLogList, SimulList simulList) {
 		// TODO Auto-generated method stub
 		List<SimulLogs> simulLogsList = new ArrayList<>();
 		for(SimulLog recordLog : recordLogList) {
 			ProcessEmbedded processEmbedded = new ProcessEmbedded(recordLog);
-			SimulLogs simulLogs = new SimulLogs(recordLog, processEmbedded);
+			SimulLogs simulLogs = new SimulLogs(simulList, recordLog, processEmbedded);
 			simulLogsList.add(simulLogs);
 		}
 		simulLogsRepository.saveAll(simulLogsList);
