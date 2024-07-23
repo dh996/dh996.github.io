@@ -17,3 +17,5 @@
 12. https://dh996.tistory.com/13 //20240703커밋
 13. https://dh996.tistory.com/14 //20240706커밋
 14. https://dh996.tistory.com/15 //20240710커밋
+15. https://dh996.tistory.com/16 //20240711커밋
+16. https://dh996.tistory.com/17 //20240712~0717커밋+DB형태
