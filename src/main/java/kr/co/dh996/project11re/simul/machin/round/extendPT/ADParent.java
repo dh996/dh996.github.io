@@ -1,8 +1,11 @@
 package kr.co.dh996.project11re.simul.machin.round.extendPT;
 
+import org.springframework.stereotype.Component;
+
 import kr.co.dh996.project11re.simul.data.BattlePower;
 import kr.co.dh996.project11re.simul.machin.abs.PowerTable;
 
+@Component
 class ADParent extends PowerTable{
 	
 	ADParent(){
