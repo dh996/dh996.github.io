@@ -61,7 +61,9 @@ public class SimulService {
 
 	public String simulStart(Map<String, Object> requestData) {
 		// TODO Auto-generated method stub
-		return simulation.simulation(simulDataService.getUserpick(requestData));
+		SimulMainObject simulMO = simulation.simulation(simulDataService.getUserpick(requestData));
+		saveSimul(simulMO);
+		return simulMO.getSid();
 	}
 	
 	@Transactional

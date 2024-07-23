@@ -18,7 +18,6 @@ import kr.co.dh996.project11re.simul.machin.setting.EnemySetting;
 @Component
 public class Simulation {
 	//시뮬레이션의 실행과정 관련기능을 수행합니다.
-	private final SimulService simulService;
 	private final SimulDataService simulDataService;
 	private final ChampService champService;
 	private final Round round;
@@ -26,13 +25,11 @@ public class Simulation {
 	private final BuildSetting buildSetting;
 	
 	@Autowired
-    public Simulation(SimulService simulService,
-    		SimulDataService simulDataService,
+    public Simulation(SimulDataService simulDataService,
     		ChampService champService,
     		Round round, EnemySetting enemySetting,
     		BuildSetting buildSetting) {
         this.round = round;
-        this.simulService = simulService;
         this.simulDataService = simulDataService;
         this.champService = champService;
 		this.enemySetting = enemySetting;
@@ -40,7 +37,7 @@ public class Simulation {
     }
 	
 	//시뮬레이션이 이곳에서 실행됩니다.
-	public String simulation(UsersPick usersPick) {
+	public SimulMainObject simulation(UsersPick usersPick) {
 		
 		SimulMainObject simulMO = new SimulMainObject(usersPick.getUserName(),usersPick.getVersion());
 		simulMO.setSimulDataList(setDataList(usersPick.getPickChamps())); //아군 팀 리스트를 추가합니다.
@@ -48,8 +45,7 @@ public class Simulation {
 		buildSetting.setBuild(simulMO.getSimulDataList(), 0); //빌드 정보를 설정합니다.
 		buildSetting.setBuild(simulMO.getSimulDataList(), 1); //0은 아군의 정보, 1은 적군의 정보를 설정합니다.
 		round.roundStart(simulMO); //시뮬레이션을 시작합니다.
-		saveSimul(simulMO); //종료 판정시 데이터를 데이터베이스에 저장합니다.
-		return simulMO.getSid();
+		return simulMO;
 	}
 
 	//유저가 고른 챔피언들의 id를 받아서 그 id에 해당하는 챔피언의 정보를 DB로부터 호출하는 기능이 들어갑니다.
@@ -62,11 +58,5 @@ public class Simulation {
 	private List<ChampDTO> callChampList(String version) {
 		// TODO Auto-generated method stub
 		return champService.getAllChampList(version);
-	}
-
-	//종료 판정시 데이터를 서비스단으로 제출합니다.
-	private void saveSimul(SimulMainObject simulMO) {
-		// TODO Auto-generated method stub
-		simulService.saveSimul(simulMO);
 	}
 }
