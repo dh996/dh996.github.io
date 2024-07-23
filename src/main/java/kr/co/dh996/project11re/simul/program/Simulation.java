@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import kr.co.dh996.project11re.dto.ChampDTO;
 import kr.co.dh996.project11re.service.ChampService;
 import kr.co.dh996.project11re.service.SimulDataService;
-import kr.co.dh996.project11re.service.SimulService;
 import kr.co.dh996.project11re.simul.data.SimulMainObject;
 import kr.co.dh996.project11re.simul.data.UsersPick;
 import kr.co.dh996.project11re.simul.data.UsingSimulData;
