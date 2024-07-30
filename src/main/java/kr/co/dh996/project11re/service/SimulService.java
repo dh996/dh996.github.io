@@ -33,7 +33,7 @@ public class SimulService {
 	//데이터베이스와 연결된 서비스 클래스입니다.
 	
 	private Simulation simulation;
-	private SimulDataService simulDataService;
+	private final SimulDataService simulDataService;
 	private final SimulDataRepository simulDataRepository;
 	private final SimulListRepository simulListRepository;
 	private final SimulLogsRepository simulLogsRepository;

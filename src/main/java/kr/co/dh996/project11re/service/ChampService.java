@@ -19,16 +19,20 @@ import kr.co.dh996.project11re.repository.ChampVersionRepository;
 @Service
 public class ChampService {
 	
-	private JsonService jsonService;
-	private ChampDataService champDataService;
+	private final JsonService jsonService;
+	private final ChampDataService champDataService;
 	private final ChampVersionRepository champVersionRepository;
 	private final ChampNameRepository champNameRepository;
 	private final ChampTagsRepository champTagsRepository;
 	
 	@Autowired
-    public ChampService(ChampVersionRepository champVersionRepository,
+    public ChampService(JsonService jsonService,
+    		ChampDataService champDataService,
+    		ChampVersionRepository champVersionRepository,
     		ChampNameRepository champNameRepository,
     		ChampTagsRepository champTagsRepository) {
+		this.jsonService = jsonService;
+		this.champDataService = champDataService;
         this.champVersionRepository = champVersionRepository;
         this.champNameRepository = champNameRepository;
         this.champTagsRepository = champTagsRepository;

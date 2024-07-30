@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,6 +18,7 @@ public class JsonService {
 
     private final ObjectMapper objectMapper;
 
+    @Autowired
 	public JsonService(ObjectMapper objectMapper) {
 	    this.objectMapper = objectMapper;
 	}

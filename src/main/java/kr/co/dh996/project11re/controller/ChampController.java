@@ -45,15 +45,15 @@ public class ChampController {
 	public String updateVersion(@RequestParam("version") String version, Model model) {
 		if(champService.checkVersion(version)) {
             model.addAttribute("message", "이미 저장된 버전입니다.");
-			return "/version/errorTest";
+			return "/testPage/errorTest";
 		}else {
 			try {
 	            champService.updateVersion(version);
 	            model.addAttribute("message", "버전 업데이트 성공");
-		        return "/version/successTest";
+		        return "/testPage/successTest";
 	        } catch (IOException e) {
 	            model.addAttribute("message", "에러발생: " + e.getMessage());
-				return "/version/errorTest";
+				return "/testPage/errorTest";
 	        } 
 		}
 	}
