@@ -84,13 +84,15 @@ public class ChampService {
 	@Transactional(readOnly = true)
 	public List<ChampDTO> getAllChampList(String version) {
 		// TODO Auto-generated method stub
-		return champNameRepository.findByChampVersionWithTags(version);
+		List<Object[]> results = champNameRepository.findByChampVersionWithTags(version);
+        return champDataService.mapToChampDTO(results);
 	}
 
 	@Transactional(readOnly = true)
 	public List<ChampDTO> getChampList(List<String> usersPickChampList) {
 		// TODO Auto-generated method stub
-        return champNameRepository.findByChampIdsWithTags(usersPickChampList);
+		List<Object[]> results = champNameRepository.findByChampIdsWithTags(usersPickChampList);
+        return champDataService.mapToChampDTO(results);
 	}
 
 	@Transactional(readOnly = true)

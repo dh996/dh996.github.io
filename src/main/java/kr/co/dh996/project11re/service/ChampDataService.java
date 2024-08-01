@@ -1,10 +1,14 @@
 package kr.co.dh996.project11re.service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import kr.co.dh996.project11re.dto.ChampDTO;
 
 @Service
 public class ChampDataService {
@@ -69,4 +73,22 @@ public class ChampDataService {
             return Integer.MIN_VALUE;
         }
     }
+
+	public List<ChampDTO> mapToChampDTO(List<Object[]> results) {
+		// TODO Auto-generated method stub
+		List<ChampDTO> champList = new ArrayList<>();
+
+        for (Object[] result : results) {
+        	String champId = (String) result[0];;
+            String champName = (String) result[1];
+            String tagString = (String) result[2];
+            List<String> champTags = new ArrayList<>();
+            if (tagString != null && !tagString.isEmpty()) {
+                champTags = Arrays.asList(tagString.split(","));
+            }
+            champList.add(new ChampDTO(champId, champName, champTags));
+        }
+
+        return champList;
+	}
 }

@@ -11,21 +11,26 @@ import kr.co.dh996.project11re.entity.ChampName;
 
 public interface ChampNameRepository extends JpaRepository<ChampName, String> {
 
-    @Query("SELECT new kr.co.dh996.project11re.dto.ChampDTO(c.champId, c.champName, " +
-           "(SELECT t.champTags FROM ChampTags t WHERE t.champVersion = c.champVersion AND t.champId = c)) " +
-           "FROM ChampName c " +
-           "WHERE c.champVersion.champVersion = :version")
-    List<ChampDTO> findByChampVersionWithTags(@Param("version") String version);
+	@Query(value = "SELECT c.champ_id, c.champ_name, " +
+            "(SELECT GROUP_CONCAT(t.champ_tags) FROM champ_tags t WHERE t.champ_version = c.champ_version AND t.champ_id = c.champ_id) as tags " +
+            "FROM champ_name c " +
+            "WHERE c.champ_version = :version", nativeQuery = true)
+    List<Object[]> findByChampVersionWithTags(@Param("version") String version);
 
-    @Query("SELECT new kr.co.dh996.project11re.dto.ChampDTO(c.champId, c.champName, " +
-           "(SELECT t.champTags FROM ChampTags t WHERE t.champId = c)) " +
-           "FROM ChampName c " +
-           "WHERE c.champId IN :ids")
-    List<ChampDTO> findByChampIdsWithTags(@Param("ids") List<String> ids);
+
+    @Query(value = "SELECT c.champ_id, c.champ_name, " +
+            "(SELECT GROUP_CONCAT(t.champ_tags) FROM champ_tags t WHERE t.champ_id = c.champ_id) as tags " +
+            "FROM champ_name c " +
+            "WHERE c.champ_id IN (:ids)", nativeQuery = true)
+    List<Object[]> findByChampIdsWithTags(@Param("ids") List<String> ids);
 }
 
 /* 복합적인 쿼리작성에 대한 지식이 아직 없어서 gpt의 도움을 다소 받았음 이하 설명을 추가함
 
+--0801 수정
+jpql에서는 서브쿼리로 리스트를 반환할 수 없다고함 그래서 네이티브 쿼리를 사용, 오브젝트를 반환한 뒤 서비스 레이어에서 DTO로 변환함
+
+-- 수정전
 첫 번째 메소드 - 입력받은 버전값에 해당하는 모든 데이터를 dto로 포장해 빼내는 것을 요구
 
 
