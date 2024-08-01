@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import kr.co.dh996.project11re.dto.ChampDTO;
 import kr.co.dh996.project11re.entity.ChampName;
 
 public interface ChampNameRepository extends JpaRepository<ChampName, String> {
@@ -14,7 +13,8 @@ public interface ChampNameRepository extends JpaRepository<ChampName, String> {
 	@Query(value = "SELECT c.champ_id, c.champ_name, " +
             "(SELECT GROUP_CONCAT(t.champ_tags) FROM champ_tags t WHERE t.champ_version = c.champ_version AND t.champ_id = c.champ_id) as tags " +
             "FROM champ_name c " +
-            "WHERE c.champ_version = :version", nativeQuery = true)
+            "WHERE c.champ_version = :version " +
+            "ORDER BY c.champ_name ASC", nativeQuery = true)
     List<Object[]> findByChampVersionWithTags(@Param("version") String version);
 
 
@@ -28,7 +28,29 @@ public interface ChampNameRepository extends JpaRepository<ChampName, String> {
 /* 복합적인 쿼리작성에 대한 지식이 아직 없어서 gpt의 도움을 다소 받았음 이하 설명을 추가함
 
 --0801 수정
-jpql에서는 서브쿼리로 리스트를 반환할 수 없다고함 그래서 네이티브 쿼리를 사용, 오브젝트를 반환한 뒤 서비스 레이어에서 DTO로 변환함
+jpql에서는 서브쿼리로 리스트를 반환할 수 없다고함 그래서 네이티브 쿼리를 사용,
+오브젝트를 반환한 뒤 서비스 레이어에서 DTO로 변환함
+
+*네이티브쿼리란 (gpt참고)
+
+네이티브 쿼리는 일반 SQL 쿼리를 말하며, JPA 또는 다른 ORM 프레임워크를 사용할 때
+데이터베이스에 직접 SQL 쿼리를 작성하여 실행하는 방식을 의미합니다.
+JPA에서는 JPQL (Java Persistence Query Language)를 주로 사용하지만,
+복잡한 쿼리나 데이터베이스 종속적인 기능을 사용할 때는 네이티브 쿼리를 사용합니다.
+
+네이티브 쿼리의 특징
+직접적인 SQL 사용: 네이티브 쿼리는 JPQL과 다르게 데이터베이스에 직접적으로 SQL 문을 작성하여 실행합니다.
+이를 통해 SQL의 모든 기능을 사용할 수 있습니다.
+데이터베이스 종속적 기능: 데이터베이스 벤더에 따라 제공되는 특수한 SQL 기능을 사용할 수 있습니다.
+복잡한 쿼리 처리: JPQL로 표현하기 어려운 복잡한 쿼리를 보다 쉽게 작성할 수 있습니다.
+
+장점
+강력한 SQL 기능: SQL의 모든 기능을 사용할 수 있어 복잡한 쿼리나 데이터베이스 종속적인 기능을 쉽게 사용할 수 있습니다.
+성능 최적화: 직접적인 SQL 튜닝이 가능하여 성능을 최적화할 수 있습니다.
+
+단점
+이식성 저하: 데이터베이스 벤더에 종속적인 SQL을 사용할 경우 데이터베이스 변경 시 쿼리를 수정해야 할 수도 있습니다.
+유지보수 비용 증가: JPQL보다 복잡하고 오류 발생 가능성이 높아 유지보수 비용이 증가할 수 있습니다.
 
 -- 수정전
 첫 번째 메소드 - 입력받은 버전값에 해당하는 모든 데이터를 dto로 포장해 빼내는 것을 요구
